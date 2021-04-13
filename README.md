@@ -1,4 +1,4 @@
-# website-v1
+# maranchello.com
 
 ## Project setup
 ```
