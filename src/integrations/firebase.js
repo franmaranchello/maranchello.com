@@ -7,7 +7,6 @@ import "@firebase/storage";
 const config = {
   apiKey: process.env.VUE_APP_APIKEY,
   authDomain: process.env.VUE_APP_AUTHDOMAIN,
-//   databaseURL: process.env.VUE_APP_DATABASEURL,
   projectId: process.env.VUE_APP_PROJECTID,
   storageBucket: process.env.VUE_APP_STORAGEBUCKET,
   messagingSenderId: process.env.VUE_APP_MESSAGINGSENDERID,
@@ -26,7 +25,7 @@ firebase.initializeApp(config);
 // }
 
 export const firestore = firebase.firestore();
-// export const auth = firebase.auth();
 export const storage = firebase.storage();
-// export const functions = firebase.functions();
 export default firebase;
+// export const auth = firebase.auth();
+// export const functions = firebase.functions();
