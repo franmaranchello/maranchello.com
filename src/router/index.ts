@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import HomeView from "../views/HomeView.vue";
+import ProjectGrid from "../views/ProjectGrid.vue";
 import AboutView from "../views/AboutView.vue";
 
 Vue.use(VueRouter);
@@ -18,6 +19,13 @@ const routes: Array<RouteConfig> = [
     name: "about",
     components: {
       main: AboutView,
+    },
+  },
+  {
+    path: "/projects",
+    name: "projects",
+    components: {
+      main: ProjectGrid,
     },
   },
 ];
