@@ -9,21 +9,35 @@ Vue.use(VueRouter);
 const routes: Array<RouteConfig> = [
   {
     path: "/",
-    name: "home",
+    name: "Home",
+    components: {
+      main: HomeView,
+    },
+  },
+  {
+    path: "/home",
+    name: "Home",
     components: {
       main: HomeView,
     },
   },
   {
     path: "/about",
-    name: "about",
+    name: "About",
     components: {
       main: AboutView,
     },
   },
   {
     path: "/projects",
-    name: "projects",
+    name: "Projects",
+    components: {
+      main: ProjectGrid,
+    },
+  },
+  {
+    path: "/blog",
+    name: "Blog",
     components: {
       main: ProjectGrid,
     },

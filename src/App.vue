@@ -1,21 +1,78 @@
 <template>
   <v-app id="app">
-    <snackbar id="menu" />
+    <v-app-bar
+      color="primary"
+      dark
+      height="60"
+      app
+      v-if="currentRouteName != 'Home'"
+    >
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-spacer></v-spacer>
+      <v-app-bar-title class="text-uppercase" v-text="currentRouteName">
+      </v-app-bar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-navigation-drawer
+      id="menu"
+      color="primary"
+      dark
+      v-model="drawer"
+      :height="height"
+      temporary
+    >
+      <v-list>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          @click="route(item.title)"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+          <v-list-item-content>
+            <v-list-item-title class="text-uppercase">{{
+              item.title
+            }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
     <v-main id="router">
-      <div class="d-flex" @snackbar-expanded.stop="displaceContent()">
-        <router-view name="main"></router-view>
-      </div>
+      <router-view
+        id="content"
+        name="main"
+        class="overflow-y-auto"
+      ></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import Snackbar from "./components/Snackbar.vue";
 
 export default Vue.extend({
-  components: { Snackbar },
   name: "App",
+  data: () => ({
+    drawer: false,
+    items: [
+      { title: "Home", icon: "mdi-home-city" },
+      { title: "About", icon: "mdi-account" },
+      { title: "Projects", icon: "mdi-account" },
+      { title: "Blog", icon: "mdi-account-group-outline" },
+    ],
+  }),
+  computed: {
+    height() {
+      return window.innerHeight;
+    },
+    currentRouteName() {
+      return this.$route.name;
+    },
+  },
   methods: {
     route(name: string) {
       this.$router.push(name);
@@ -26,4 +83,21 @@ export default Vue.extend({
   },
 });
 </script>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap");
+#menu {
+  position: absolute;
+  top: 60px !important;
+  bottom: 0 !important;
+  height: unset !important;
+  z-index: 100;
+}
+.v-application {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  .title {
+    // To pin point specific classes of some components
+    font-size: xx-large !important;
+  }
+}
+</style>

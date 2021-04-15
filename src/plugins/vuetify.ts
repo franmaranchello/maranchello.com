@@ -8,13 +8,14 @@ export default new Vuetify({
     dark: true,
     themes: {
       dark: {
-        primary: "#DF928E", // wheat EAD2AC
-        secondary: "#EAD2AC", // ny pink
-        accent: "#D1DEDE", // gainsboro
-        error: "#C58882", // old rose
-        info: "#1C1C1C", // dark background
-        success: "#4CAF50",
-        warning: "#FFC107",
+        primary: "#3F51B5", //indigo
+        secondary: "#CDDC39", //lime
+        accent: "#673AB7", //deep purple
+        error: "#F44336", //red
+        info: "#FF5722", //deep orange
+        success: "#8BC34A", //light green
+        warning: "#F44336", //red
+        background: "0D1117", //blue grey
       },
     },
   },
