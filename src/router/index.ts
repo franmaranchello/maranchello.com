@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
+import Menu from "../components/Menu.vue";
 import HomeView from "../views/HomeView.vue";
 import ProjectGrid from "../views/ProjectGrid.vue";
 import AboutView from "../views/AboutView.vue";
@@ -12,6 +13,7 @@ const routes: Array<RouteConfig> = [
     name: "Home",
     components: {
       main: HomeView,
+      menu: Menu,
     },
   },
   {
@@ -19,6 +21,7 @@ const routes: Array<RouteConfig> = [
     name: "Home",
     components: {
       main: HomeView,
+      menu: Menu,
     },
   },
   {
@@ -26,6 +29,7 @@ const routes: Array<RouteConfig> = [
     name: "About",
     components: {
       main: AboutView,
+      menu: Menu,
     },
   },
   {
@@ -33,6 +37,7 @@ const routes: Array<RouteConfig> = [
     name: "Projects",
     components: {
       main: ProjectGrid,
+      menu: Menu,
     },
   },
   {
@@ -40,6 +45,7 @@ const routes: Array<RouteConfig> = [
     name: "Blog",
     components: {
       main: ProjectGrid,
+      menu: Menu,
     },
   },
 ];

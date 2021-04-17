@@ -1,6 +1,6 @@
 <template>
-  <v-app id="app">
-    <!-- <v-app-bar
+  <div>
+    <v-app-bar
       color="primary"
       dark
       height="60"
@@ -40,33 +40,45 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-    </v-navigation-drawer> -->
-    <v-main id="router">
-      <router-view id="taskbar" name="menu"> </router-view>
-      <router-view
-        id="content"
-        name="main"
-        class="overflow-y-auto"
-      ></router-view>
-    </v-main>
-  </v-app>
+    </v-navigation-drawer>
+  </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "App",
+  name: "Menu",
+  data: () => ({
+    drawer: false,
+    items: [
+      { title: "Home", icon: "mdi-home-city" },
+      { title: "About", icon: "mdi-account" },
+      { title: "Projects", icon: "mdi-account" },
+      { title: "Blog", icon: "mdi-account-group-outline" },
+    ],
+  }),
+  computed: {
+    height() {
+      return window.innerHeight;
+    },
+    currentRouteName() {
+      return this.$route.name;
+    },
+  },
+  methods: {
+    route(name: string) {
+      this.$router.push(name);
+    },
+  },
 });
 </script>
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap");
-.v-application {
-  font-family: "Poppins", sans-serif;
-  font-weight: 100;
-  .title {
-    // To pin point specific classes of some components
-    font-size: xx-large !important;
-  }
+#menu {
+  position: fixed;
+  top: 0px !important;
+  bottom: 0 !important;
+  height: unset !important;
+  z-index: 100;
 }
 </style>
