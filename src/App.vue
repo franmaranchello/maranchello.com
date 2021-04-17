@@ -1,48 +1,7 @@
 <template>
   <v-app id="app">
-    <!-- <v-app-bar
-      color="primary"
-      dark
-      height="60"
-      app
-      v-if="currentRouteName != 'Home'"
-    >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-spacer></v-spacer>
-      <v-app-bar-title class="text-uppercase" v-text="currentRouteName">
-      </v-app-bar-title>
-      <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-    </v-app-bar>
-    <v-navigation-drawer
-      id="menu"
-      color="primary"
-      dark
-      v-model="drawer"
-      :height="height"
-      temporary
-    >
-      <v-list>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          @click="route(item.title)"
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-          <v-list-item-content>
-            <v-list-item-title class="text-uppercase">{{
-              item.title
-            }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer> -->
     <v-main id="router">
-      <router-view id="taskbar" name="menu"> </router-view>
+      <router-view id="taskbar" name="menu" class="dark"> </router-view>
       <router-view
         id="content"
         name="main"
@@ -68,5 +27,20 @@ export default Vue.extend({
     // To pin point specific classes of some components
     font-size: xx-large !important;
   }
+}
+::-webkit-scrollbar {
+  width: 15px;
+}
+::-webkit-scrollbar-track {
+  background: #202020;
+  border-left: 1px solid #2c2c2c;
+}
+::-webkit-scrollbar-thumb {
+  background: #3e3e3e;
+  border: solid 3px #202020;
+  border-radius: 7px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: white;
 }
 </style>

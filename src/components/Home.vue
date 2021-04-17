@@ -3,7 +3,9 @@
     <v-spacer></v-spacer>
     <v-row align="center" justify="center" class="ma-8">
       <v-avatar size="250">
-        <v-img src="../resources/fm.png"></v-img>
+        <v-img
+          src="https://media-exp1.licdn.com/dms/image/C5603AQFBb-6_1CV-lQ/profile-displayphoto-shrink_800_800/0/1589253505274?e=1623888000&v=beta&t=RS0i2a_wuiwZeeTkTIWvHy9h2mzQWVPHR1L9qUr0gI0"
+        ></v-img>
       </v-avatar>
     </v-row>
     <v-row align="center" justify="center" class="ma-8">
