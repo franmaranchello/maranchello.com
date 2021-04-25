@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app id="app">
+    <v-main id="router">
+      <router-view id="taskbar" name="menu" class="dark"> </router-view>
+      <router-view
+        id="content"
+        name="main"
+        class="overflow-y-auto"
+      ></router-view>
+    </v-main>
+  </v-app>
 </template>
 
-<script>
-import HelloWorld from './components/HelloWorld.vue'
+<script lang="ts">
+import Vue from "vue";
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+export default Vue.extend({
+  name: "App",
+});
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap");
+.v-application {
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  .title {
+    // To pin point specific classes of some components
+    font-size: xx-large !important;
+  }
 }
 </style>
