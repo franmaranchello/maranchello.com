@@ -42,84 +42,70 @@ export default Vue.extend({
     displayToggle: 0,
     projects: [
       {
-        name: "Project 1",
-        type: "Single Family Home",
-        tags: ["Spacious", "Affordable", "New"],
-        collection: "K. Hovnanian Competition",
+        name: "Casa Piana",
+        type: "Architecture",
+        tags: ["Visualization", "Single Family Home", "Design"],
+        collection: "Visualization",
         description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
+          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
+        content: "",
         image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
+          "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc5e041c-3034-4a5c-879b-ffb66d2d56a1/Image24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210425%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210425T231932Z&X-Amz-Expires=86400&X-Amz-Signature=3f5b889c5367d751f054f5f1ae83f4e83b2e848b63dc0819b479262603b6a90b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Image24.png%22",
       },
       {
         name: "Project 2",
-        type: "Detached Condos",
-        tags: ["Luxury", "Good Community"],
-        collection: "Portfolio",
+        type: "Architecture",
+        tags: ["Visualization", "Single Family Home", "Design"],
+        collection: "Visualization",
         description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
+          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
+        content: "",
         image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
+          "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc5e041c-3034-4a5c-879b-ffb66d2d56a1/Image24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210425%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210425T231932Z&X-Amz-Expires=86400&X-Amz-Signature=3f5b889c5367d751f054f5f1ae83f4e83b2e848b63dc0819b479262603b6a90b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Image24.png%22",
       },
       {
         name: "Project 3",
-        type: "High Rise",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
+        type: "Architecture",
+        tags: ["Visualization", "Single Family Home", "Design"],
+        collection: "Visualization",
         description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
+          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
+        content: "",
         image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
+          "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc5e041c-3034-4a5c-879b-ffb66d2d56a1/Image24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210425%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210425T231932Z&X-Amz-Expires=86400&X-Amz-Signature=3f5b889c5367d751f054f5f1ae83f4e83b2e848b63dc0819b479262603b6a90b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Image24.png%22",
       },
       {
         name: "Project 4",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
+        type: "Architecture",
+        tags: ["Visualization", "Single Family Home", "Design"],
+        collection: "Visualization",
         description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
+          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
+        content: "",
         image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
+          "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc5e041c-3034-4a5c-879b-ffb66d2d56a1/Image24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210425%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210425T231932Z&X-Amz-Expires=86400&X-Amz-Signature=3f5b889c5367d751f054f5f1ae83f4e83b2e848b63dc0819b479262603b6a90b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Image24.png%22",
       },
       {
         name: "Project 5",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
+        type: "Architecture",
+        tags: ["Visualization", "Single Family Home", "Design"],
+        collection: "Visualization",
         description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
+          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
+        content: "",
         image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
+          "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc5e041c-3034-4a5c-879b-ffb66d2d56a1/Image24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210425%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210425T231932Z&X-Amz-Expires=86400&X-Amz-Signature=3f5b889c5367d751f054f5f1ae83f4e83b2e848b63dc0819b479262603b6a90b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Image24.png%22",
       },
       {
         name: "Project 6",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
+        type: "Architecture",
+        tags: ["Visualization", "Single Family Home", "Design"],
+        collection: "Visualization",
         description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
+          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
+        content: "",
         image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 7",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
-        description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 8",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
-        description:
-          "Starting from Mid $300s. Amenities: Barbecue Area, Dog Park, Golf, Fitness Center, Olympic Pool, Spa.",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
+          "https://s3.us-west-2.amazonaws.com/secure.notion-static.com/bc5e041c-3034-4a5c-879b-ffb66d2d56a1/Image24.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20210425%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20210425T231932Z&X-Amz-Expires=86400&X-Amz-Signature=3f5b889c5367d751f054f5f1ae83f4e83b2e848b63dc0819b479262603b6a90b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Image24.png%22",
       },
     ],
   }),
