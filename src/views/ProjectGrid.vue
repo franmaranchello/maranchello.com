@@ -1,9 +1,12 @@
 <template>
   <div class="container">
     <v-container fluid>
-      <v-row>
+      <v-row dense>
         <v-col v-for="project in projects" :key="project.name">
-          <project-card :project="project"></project-card>
+          <project-card
+            :project="project"
+            @show-details="updateSelectedProject"
+          ></project-card>
         </v-col>
       </v-row>
     </v-container>
@@ -11,63 +14,20 @@
 </template>
 
 <script lang="ts">
+import { Project } from "../types/Project";
 import Vue from "vue";
-import ProjectCard from "../components/ProjectCard.vue";
+import ProjectCard from "../components/browse/ProjectCard.vue";
 
 export default Vue.extend({
-  name: "Home",
-  data: () => ({
-    projects: [
-      {
-        name: "Project 1",
-        type: "House",
-        tags: ["Spacious", "Affordable", "New"],
-        collection: "K. Hovnanian Competition",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 2",
-        type: "High Rise",
-        tags: ["Luxury", "Good Community"],
-        collection: "Portfolio",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 3",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 4",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 5",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-      {
-        name: "Project 6",
-        type: "Development",
-        tags: ["Good Location"],
-        collection: "K. Hovnanian Homes",
-        image:
-          "https://khov2cachecdn.azureedge.net/azure/sitefinitylibraries/images/default-source/images/corp/k-hovnanian-homes-a-spot-images/new-home-images/68324_galloway-ridge_capstone_model-exteriors.jpg?sfvrsn=126c1984_0&build=1705&encoder=wic&useresizingpipeline=true&width=1200",
-      },
-    ],
-  }),
+  name: "ProjectGrid",
+  props: {
+    projects: Array,
+  },
+  methods: {
+    updateSelectedProject(project: Project) {
+      this.$emit("show-details", project);
+    },
+  },
   components: {
     ProjectCard,
   },

@@ -1,12 +1,6 @@
 <template>
   <div>
-    <v-app-bar
-      color="primary"
-      dark
-      height="60"
-      app
-      v-if="currentRouteName != 'Home'"
-    >
+    <v-app-bar color="primary" dark height="60" app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
       <v-app-bar-title class="text-uppercase" v-text="currentRouteName">
