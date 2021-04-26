@@ -6,9 +6,6 @@
       <v-app-bar-title class="text-uppercase" v-text="currentRouteName">
       </v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-navigation-drawer
       id="menu"
@@ -34,6 +31,11 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <template v-slot:append>
+        <div v-if="drawer" class="pa-2">
+          <v-btn block @click="login()"> Admin </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
   </div>
 </template>
@@ -63,6 +65,9 @@ export default Vue.extend({
   methods: {
     route(name: string) {
       this.$router.push(name);
+    },
+    login() {
+      this.route("login");
     },
   },
 });
