@@ -2,10 +2,13 @@
   <v-slide-y-reverse-transition>
     <div class="container">
       <v-list outlined two-line subheader class="mt-15">
-        <v-list-item three-line v-for="(project, i) in projects" :key="i">
-          <v-list-item-avatar style="square" left
-            ><v-img :src="project.gallery[0]"
-          /></v-list-item-avatar>
+        <v-list-item three-line v-for="(project, i) in projects" :key="i"
+          ><v-img
+            class="ma-2 fill-height"
+            :src="project.gallery[0]"
+            :lazy-src="defaultImage"
+            max-width="100"
+          />
           <v-list-item-content>
             <v-list-item-title>
               {{ project.name }}
@@ -44,6 +47,10 @@ import { Project } from "../types/project";
 
 export default Vue.extend({
   name: "ProjectList",
+  data: () => ({
+    defaultImage:
+      "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
+  }),
   props: {
     projects: {
       type: Array,
