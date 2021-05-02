@@ -33,6 +33,7 @@ import ProjectGrid from "../../views/ProjectGrid.vue";
 import ProjectList from "../../views/ProjectList.vue";
 import Details from "./Details.vue";
 import { Project } from "@/types/project";
+// import firebase from "../../integrations/firebase";
 
 export default Vue.extend({
   name: "Browse",
@@ -52,6 +53,7 @@ export default Vue.extend({
   },
   data: () => ({
     selectedProject: {},
+    // projectCollection: firebase.firestore().collection("projects"),
     searchText: "",
     displayToggle: 0,
     projects: [

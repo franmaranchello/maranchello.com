@@ -17,6 +17,8 @@
 
 <script lang="ts">
 import { Component, Vue, Prop } from "vue-property-decorator";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 @Component
 export default class ProviderLogin extends Vue {
@@ -30,7 +32,8 @@ export default class ProviderLogin extends Vue {
   async signInWithGoogle(): Promise<void> {
     this.btnLoadingGoogle = true;
     try {
-      await this.$store.dispatch("auth/loginWithGoogle");
+      const provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider);
     } catch (error) {
       console.log(error);
     }
