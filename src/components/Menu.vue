@@ -64,7 +64,7 @@ export default Vue.extend({
   },
   methods: {
     route(name: string) {
-      this.$router.push(name);
+      this.$router.push(name.toLowerCase());
     },
     login() {
       this.route("login");

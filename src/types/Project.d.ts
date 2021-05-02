@@ -1,8 +1,9 @@
 export interface Project {
   name: string;
   type: string;
-  tags: Array;
+  tags: string[];
   collection: string;
   description: string;
-  image: string;
+  content: string;
+  gallery: string[];
 }

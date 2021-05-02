@@ -1,5 +1,5 @@
 <template>
-  <v-card-text class="mt-10">
+  <div class="text-center mt-15">
     <v-btn
       @click="signInWithGoogle"
       :loading="btnLoadingGoogle"
@@ -7,12 +7,12 @@
       large
       color="primary"
       dark
-      width="100%"
+      width="40%"
     >
       <v-icon left dark color="white"> mdi-google </v-icon>
       <span class="mr-4"> Sign in with Google </span>
     </v-btn>
-  </v-card-text>
+  </div>
 </template>
 
 <script lang="ts">
