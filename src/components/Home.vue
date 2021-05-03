@@ -74,6 +74,19 @@
         <v-icon color="background"> mdi-github </v-icon>
       </v-btn>
     </v-row>
+    <v-row align="center" justify="center" class="ma-8">
+      <div class="grey--text text-center">
+        ©{{ currentYear }} Francisco Maranchello. View the code for this webapp
+        on
+        <a
+          href="https://github.com/franmaranchello/maranchello.com"
+          target="_blank"
+          class="grey--text"
+        >
+          GitHub</a
+        >
+      </div>
+    </v-row>
   </v-container>
 </template>
 
@@ -81,6 +94,11 @@
 import Vue from "vue";
 export default Vue.extend({
   name: "Home",
+  computed: {
+    currentYear() {
+      return new Date().getFullYear();
+    },
+  },
   methods: {
     route(name: string) {
       this.$router.push(name);
