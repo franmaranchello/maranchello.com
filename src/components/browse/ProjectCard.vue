@@ -1,5 +1,5 @@
 <template>
-  <v-slide-y-reverse-transition hide-on-leave>
+  <v-slide-y-transition>
     <v-card
       class="mx-auto my-12"
       color="primary"
@@ -7,6 +7,7 @@
       max-width="500"
     >
       <v-img
+        v-cloak
         v-if="project.gallery && project.gallery.length > 0"
         :src="project.gallery[0]"
         :lazy-src="defaultImage"
@@ -39,7 +40,7 @@
         <v-btn block color="background" @click="seeMore()"> See more </v-btn>
       </v-card-actions>
     </v-card>
-  </v-slide-y-reverse-transition>
+  </v-slide-y-transition>
 </template>
 
 <script lang="ts">

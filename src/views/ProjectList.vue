@@ -3,7 +3,7 @@
     <div class="container">
       <v-list outlined two-line subheader class="mt-15">
         <v-list-item three-line v-for="(project, i) in projects" :key="i"
-          ><v-list-item-avatar class="mt-6" width="100" height="100">
+          ><v-list-item-avatar left width="100" height="100">
             <v-img
               v-if="project.gallery && project.gallery.length > 0"
               :src="project.gallery[0]"
@@ -25,17 +25,11 @@
               v-if="projects.indexOf(project) < projects.length - 1"
             />
           </v-list-item-content>
-          <v-list-item-action>
-            <v-btn
-              class="mt-8"
-              block
-              text
-              color="secondary"
-              @click="seeMore(project)"
-            >
-              See more
+          <v-list-item-action-text>
+            <v-btn block color="secondary" @click="seeMore(project)">
+              <div class="black--text">See more</div>
             </v-btn>
-          </v-list-item-action>
+          </v-list-item-action-text>
         </v-list-item>
       </v-list>
     </div>
