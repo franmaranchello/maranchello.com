@@ -37,7 +37,8 @@
       </v-list-item>
 
       <v-card-actions>
-        <v-btn outlined rounded text @click="callClose"> Back </v-btn>
+        <v-btn outlined rounded @click="callClose"> Back </v-btn>
+        <v-btn outlined rounded> <v-icon>mdi-send</v-icon> </v-btn>
       </v-card-actions>
     </v-card>
   </v-slide-y-transition>

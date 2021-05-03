@@ -1,17 +1,15 @@
 <template>
   <v-slide-y-reverse-transition hide-on-leave>
-    <div class="container">
-      <v-container fluid>
-        <v-row dense>
-          <v-col v-for="post in posts" :key="post.name">
-            <blog-card
-              :post="post"
-              @show-details="updateSelectedPost"
-            ></blog-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </div>
+    <v-container>
+      <v-row>
+        <v-col v-for="post in posts" :key="post.name">
+          <blog-card
+            :post="post"
+            @show-details="updateSelectedPost"
+          ></blog-card>
+        </v-col>
+      </v-row>
+    </v-container>
   </v-slide-y-reverse-transition>
 </template>
 

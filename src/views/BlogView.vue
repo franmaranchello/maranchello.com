@@ -38,7 +38,7 @@ export default Vue.extend({
       this.selectedPost = {};
     },
     async getPosts() {
-      const postCollection = await db.posts.orderBy("name", "desc").get();
+      const postCollection = await db.posts.orderBy("date", "desc").get();
       postCollection.forEach((post) => {
         this.postColl.push(post.data());
       });

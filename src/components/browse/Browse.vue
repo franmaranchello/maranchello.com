@@ -55,7 +55,7 @@ export default Vue.extend({
       this.selectedProject = {};
     },
     async getProjects() {
-      const projectCollection = await db.projects.orderBy("name", "desc").get();
+      const projectCollection = await db.projects.orderBy("date", "desc").get();
       projectCollection.forEach((project) => {
         this.projectColl.push(project.data());
       });
