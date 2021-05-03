@@ -3,7 +3,10 @@
     <v-app-bar color="primary" dark height="60" app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-      <v-app-bar-title class="text-uppercase" v-text="currentRouteName">
+      <v-app-bar-title
+        class="text-uppercase flex text-center mr-14"
+        v-text="currentRouteName"
+      >
       </v-app-bar-title>
       <v-spacer></v-spacer>
     </v-app-bar>

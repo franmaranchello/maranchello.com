@@ -1,5 +1,5 @@
 <template>
-  <v-slide-y-reverse-transition>
+  <v-slide-y-reverse-transition hide-on-leave>
     <v-row class="vo-control-bar">
       <v-col cols="10">
         <v-text-field

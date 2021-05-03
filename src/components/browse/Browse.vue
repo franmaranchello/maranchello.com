@@ -8,15 +8,17 @@
         :displayToggle.sync="displayToggle"
       />
       <ProjectGrid
-        v-if="projectColl.length > 0"
+        v-cloak
+        v-if="getFilteredProjects().length > 0"
         v-show="displayToggle === 0 && selectedProject.name == undefined"
-        :projects="projectColl"
+        :projects="getFilteredProjects()"
         @show-details="updateSelectedProject"
       />
       <ProjectList
-        v-if="projectColl.length > 0"
+        v-cloak
+        v-if="getFilteredProjects().length > 0"
         v-show="displayToggle === 1 && selectedProject.name == undefined"
-        :projects="projectColl"
+        :projects="getFilteredProjects()"
         @show-details="updateSelectedProject"
       />
     </v-container>
@@ -57,6 +59,22 @@ export default Vue.extend({
       projectCollection.forEach((project) => {
         this.projectColl.push(project.data());
       });
+    },
+    getFilteredProjects(): Project[] {
+      if (this.searchText == "" || this.searchText == null)
+        return this.projectColl;
+      else {
+        return this.projectColl.filter((project: Project) => {
+          return [
+            project.name,
+            project.type,
+            ...project.tags,
+            project.collection,
+          ].some((field) =>
+            field.toLowerCase().includes(this.searchText.toLowerCase().trim())
+          );
+        });
+      }
     },
   },
   data: () => ({

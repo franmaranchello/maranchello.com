@@ -1,13 +1,14 @@
 <template>
-  <v-slide-y-reverse-transition>
+  <v-slide-y-reverse-transition hide-on-leave>
     <div class="container">
       <v-list outlined two-line subheader class="mt-15">
         <v-list-item three-line v-for="(project, i) in projects" :key="i"
           ><v-img
-            class="ma-2 fill-height"
+            v-if="project.gallery && project.gallery.length > 0"
             :src="project.gallery[0]"
             :lazy-src="defaultImage"
             max-width="100"
+            class="mr-4"
           />
           <v-list-item-content>
             <v-list-item-title>

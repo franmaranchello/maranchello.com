@@ -1,5 +1,5 @@
 <template>
-  <v-slide-y-transition>
+  <v-slide-y-transition hide-on-leave>
     <v-card id="details-container" class="ma-8" outlined>
       <v-row>
         <v-col>

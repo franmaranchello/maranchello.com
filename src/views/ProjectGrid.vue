@@ -1,5 +1,5 @@
 <template>
-  <v-slide-y-reverse-transition>
+  <v-slide-y-reverse-transition hide-on-leave>
     <div class="container">
       <v-container fluid>
         <v-row dense>
