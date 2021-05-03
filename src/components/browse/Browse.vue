@@ -8,13 +8,15 @@
         :displayToggle.sync="displayToggle"
       />
       <ProjectGrid
+        v-if="projectColl.length > 0"
         v-show="displayToggle === 0 && selectedProject.name == undefined"
-        :projects="projects"
+        :projects="projectColl"
         @show-details="updateSelectedProject"
       />
       <ProjectList
+        v-if="projectColl.length > 0"
         v-show="displayToggle === 1 && selectedProject.name == undefined"
-        :projects="projects"
+        :projects="projectColl"
         @show-details="updateSelectedProject"
       />
     </v-container>
@@ -33,7 +35,7 @@ import ProjectGrid from "../../views/ProjectGrid.vue";
 import ProjectList from "../../views/ProjectList.vue";
 import Details from "./Details.vue";
 import { Project } from "@/types/project";
-// import firebase from "../../integrations/firebase";
+import db from "../../store/db";
 
 export default Vue.extend({
   name: "Browse",
@@ -50,98 +52,21 @@ export default Vue.extend({
     closeDetails() {
       this.selectedProject = {};
     },
+    async getProjects() {
+      const projectCollection = await db.projects.orderBy("name", "desc").get();
+      projectCollection.forEach((project) => {
+        this.projectColl.push(project.data());
+      });
+    },
   },
   data: () => ({
     selectedProject: {},
-    // projectCollection: firebase.firestore().collection("projects"),
     searchText: "",
     displayToggle: 0,
-    projects: [
-      {
-        name: "Casa Piana",
-        type: "Architecture",
-        tags: ["Visualization", "Single Family Home", "Design"],
-        collection: "Visualization",
-        description:
-          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
-        content: "Longer content",
-        gallery: [
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-        ],
-      },
-      {
-        name: "Project 2",
-        type: "Architecture",
-        tags: ["Visualization", "Single Family Home", "Design"],
-        collection: "Visualization",
-        description:
-          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
-        content: "Longer content",
-        gallery: [
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-        ],
-      },
-      {
-        name: "Project 3",
-        type: "Architecture",
-        tags: ["Visualization", "Single Family Home", "Design"],
-        collection: "Visualization",
-        description:
-          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
-        content: "Longer content",
-        gallery: [
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-        ],
-      },
-      {
-        name: "Project 4",
-        type: "Architecture",
-        tags: ["Visualization", "Single Family Home", "Design"],
-        collection: "Visualization",
-        description:
-          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
-        content: "Longer content",
-        gallery: [
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-        ],
-      },
-      {
-        name: "Project 5",
-        type: "Architecture",
-        tags: ["Visualization", "Single Family Home", "Design"],
-        collection: "Visualization",
-        description:
-          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
-        content: "Longer content",
-        gallery: [
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-        ],
-      },
-      {
-        name: "Project 6",
-        type: "Architecture",
-        tags: ["Visualization", "Single Family Home", "Design"],
-        collection: "Visualization",
-        description:
-          "Casa Piana is a family residence in Córdoba, Argentina. It's born from a concept that starts with a rectangular, elevated volume and through different subtractions a path ranging through sub-spaces and internal patios is generated.",
-        content: "Longer content",
-        gallery: [
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-          "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
-        ],
-      },
-    ] as Project[],
+    projectColl: [] as Project[],
   }),
+  mounted() {
+    this.getProjects();
+  },
 });
 </script>
