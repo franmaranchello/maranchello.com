@@ -5,6 +5,7 @@ import HomeView from "../views/HomeView.vue";
 import Browse from "../components/browse/Browse.vue";
 import AboutView from "../views/AboutView.vue";
 import Login from "../components/Login.vue";
+import BlogView from "../views/BlogView.vue";
 
 Vue.use(VueRouter);
 
@@ -43,7 +44,7 @@ const routes: Array<RouteConfig> = [
     path: "/blog",
     name: "Blog",
     components: {
-      main: Browse,
+      main: BlogView,
       menu: Menu,
     },
   },

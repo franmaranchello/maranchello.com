@@ -2,13 +2,13 @@
   <v-slide-y-transition hide-on-leave>
     <v-card id="details-container" class="ma-8" outlined>
       <v-carousel
-        v-if="project.gallery && project.gallery.length > 0"
-        :src="project.gallery[0]"
+        v-if="post.gallery && post.gallery.length > 0"
+        :src="post.gallery[0]"
         :lazy-src="defaultImage"
         max-height="15%"
       >
         <v-carousel-item
-          v-for="(item, i) in project.gallery"
+          v-for="(item, i) in post.gallery"
           :key="i"
           :src="item" />
         <template v-slot:placeholder>
@@ -21,15 +21,18 @@
       ></v-carousel>
       <v-list-item three-line>
         <v-list-item-content>
-          <div class="mb-4 overline">
-            {{ project.type }} - {{ project.collection }} -
-            {{ project.date.toDate().getFullYear() }}
-          </div>
+          <v-chip-group active-class="deep-purple accent-4 white--text" column>
+            <v-chip v-for="tag in post.tags" :key="tag">{{ tag }}</v-chip>
+          </v-chip-group>
           <v-list-item-title class="mb-1">
-            {{ project.name }}
+            {{ post.name }}
           </v-list-item-title>
-          <v-list-item-subtitle>{{ project.description }}</v-list-item-subtitle>
-          <v-list-item-content>{{ project.content }}</v-list-item-content>
+          <v-list-item-subtitle>{{
+            post.date.toDate().toDateString()
+          }}</v-list-item-subtitle>
+          <v-spacer />
+          <v-list-item-subtitle>{{ post.description }}</v-list-item-subtitle>
+          <v-list-item-content>{{ post.content }}</v-list-item-content>
         </v-list-item-content>
       </v-list-item>
 
@@ -42,18 +45,18 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Project } from "../../types/project";
+import { Post } from "../../types/post";
 
 export default Vue.extend({
-  name: "Details",
+  name: "BlogDetails",
   data: () => ({
     defaultImage:
       "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
     imgIndex: null,
   }),
   props: {
-    project: {
-      type: Object as () => Project,
+    post: {
+      type: Object as () => Post,
       required: true,
     },
   },

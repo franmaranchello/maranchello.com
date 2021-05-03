@@ -1,5 +1,6 @@
 import firebase from "firebase";
 import { Project } from "@/types/project";
+import { Post } from "@/types/post";
 import "@firebase/firestore";
 import "@firebase/storage";
 import "@firebase/auth";
@@ -20,6 +21,7 @@ const dataPoint = <T>(collectionPath: string) =>
 // Database helper object
 const db = {
   projects: dataPoint<Project>("projects"),
+  posts: dataPoint<Post>("posts"),
 };
 
 // Export helper
