@@ -35,10 +35,10 @@
           <v-chip
             v-for="tag in project.tags"
             :key="tag"
-            @click="filterByTag(tag)"
-            @input="clearFilter"
             filter
             filter-icon="mdi-close"
+            @input="filterByTag"
+            @click="updateFilter(tag)"
             >{{ tag }}</v-chip
           >
         </v-chip-group>
@@ -60,6 +60,7 @@ export default Vue.extend({
   data: () => ({
     defaultImage:
       "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",
+    currentFilter: "",
   }),
   props: {
     project: {
@@ -71,11 +72,15 @@ export default Vue.extend({
     seeMore() {
       this.$emit("show-details", this.project);
     },
-    filterByTag(tag: string) {
-      this.$emit("tag-filter", tag);
+    updateFilter(tag: string) {
+      this.currentFilter = tag;
     },
-    clearFilter(e: boolean) {
-      if (!e) this.$emit("tag-filter", "");
+    filterByTag(active: boolean) {
+      if (active)
+        setTimeout(() => this.$emit("tag-filter", this.currentFilter), 10);
+      else {
+        this.$emit("tag-filter", "");
+      }
     },
   },
 });
