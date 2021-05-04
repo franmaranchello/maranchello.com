@@ -24,7 +24,15 @@
 
       <v-card-text>
         <v-chip-group active-class="deep-purple accent-4 white--text" column>
-          <v-chip v-for="tag in post.tags" :key="tag">{{ tag }}</v-chip>
+          <v-chip
+            v-for="tag in post.tags"
+            :key="tag"
+            filter
+            filter-icon="mdi-close"
+            @click="filterByTag(tag)"
+            @input="clearFilter"
+            >{{ tag }}</v-chip
+          >
         </v-chip-group>
       </v-card-text>
 
@@ -54,6 +62,12 @@ export default Vue.extend({
   methods: {
     seeMore() {
       this.$emit("show-details", this.post);
+    },
+    filterByTag(tag: string) {
+      this.$emit("tag-filter", tag);
+    },
+    clearFilter(e: boolean) {
+      if (!e) this.$emit("tag-filter", "");
     },
   },
 });

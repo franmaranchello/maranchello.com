@@ -13,6 +13,7 @@
         v-show="displayToggle === 0 && selectedProject.name == undefined"
         :projects="getFilteredProjects()"
         @show-details="updateSelectedProject"
+        @tag-filter="filterByTag"
       />
       <ProjectList
         v-cloak
@@ -75,6 +76,9 @@ export default Vue.extend({
           );
         });
       }
+    },
+    filterByTag(tag: string) {
+      this.searchText = tag;
     },
   },
   data: () => ({

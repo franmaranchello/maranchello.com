@@ -7,6 +7,7 @@
             <project-card
               :project="project"
               @show-details="updateSelectedProject"
+              @tag-filter="filterByTag"
             ></project-card>
           </v-col>
         </v-row>
@@ -31,6 +32,9 @@ export default Vue.extend({
   methods: {
     updateSelectedProject(project: Project) {
       this.$emit("show-details", project);
+    },
+    filterByTag(tag: string) {
+      this.$emit("tag-filter", tag);
     },
   },
   components: {

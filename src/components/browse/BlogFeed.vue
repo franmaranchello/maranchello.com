@@ -6,6 +6,7 @@
           <blog-card
             :post="post"
             @show-details="updateSelectedPost"
+            @tag-filter="filterByTag"
           ></blog-card>
         </v-col>
       </v-row>
@@ -29,6 +30,9 @@ export default Vue.extend({
   methods: {
     updateSelectedPost(blogPost: Post) {
       this.$emit("show-details", blogPost);
+    },
+    filterByTag(tag: string) {
+      this.$emit("tag-filter", tag);
     },
   },
   components: {

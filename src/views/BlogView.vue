@@ -7,6 +7,7 @@
         v-show="selectedPost.name == undefined"
         :posts="getFilteredPosts()"
         @show-details="updateSelectedPost"
+        @tag-filter="filterByTag"
       />
     </v-container>
     <BlogDetails
@@ -53,6 +54,9 @@ export default Vue.extend({
           );
         });
       }
+    },
+    filterByTag(tag: string) {
+      this.searchText = tag;
     },
   },
   data: () => ({
