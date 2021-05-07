@@ -33,9 +33,14 @@ export default class ProviderLogin extends Vue {
     this.btnLoadingGoogle = true;
     try {
       const provider = new firebase.auth.GoogleAuthProvider();
-      firebase.auth().signInWithPopup(provider);
+      firebase
+        .auth()
+        .signInWithPopup(provider)
+        .then(() => alert("Successful log in"))
+        .finally(() => this.$router.push("admin"));
     } catch (error) {
-      console.log(error);
+      alert(error);
+      this.$router.push("/");
     }
   }
 }
