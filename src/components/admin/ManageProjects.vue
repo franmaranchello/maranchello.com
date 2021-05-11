@@ -134,9 +134,9 @@ export default Vue.extend({
               .ref(`project-assets/${key}/${file.name}`)
               .put(file)
               .then((upload) => {
-                upload.ref.getDownloadURL().then((url) => {
+                upload.ref.getDownloadURL().then(async (url) => {
                   console.log("pushing url: ", url);
-                  db.projects.firestore.doc(key).update({
+                  await db.projects.doc(key).update({
                     gallery: firebase.firestore.FieldValue.arrayUnion(url),
                   });
                 });
