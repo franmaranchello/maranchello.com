@@ -1,28 +1,20 @@
 <template>
   <v-slide-y-transition>
-    <v-card
-      class="mx-auto my-12"
-      color="primary"
-      style="cursor: arrow"
-      max-width="500"
-    >
+    <v-card class="mx-auto my-12" color="primary" style="cursor: arrow">
       <v-img
         v-cloak
-        v-if="project.gallery && project.gallery.length > 0"
-        :src="project.gallery[0]"
+        v-if="post.gallery && post.gallery.length > 0"
+        :src="post.gallery[0]"
         :lazy-src="defaultImage"
         class="white--text align-end"
         gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
         height="250px"
       >
-        <v-card-title>{{ project.name }}</v-card-title>
+        <v-card-title>{{ post.name }}</v-card-title>
       </v-img>
-      <v-card-subtitle
-        >{{ project.type }} - {{ project.collection }}</v-card-subtitle
-      >
       <v-card-text>
         <div>
-          {{ project.description }}
+          {{ post.description }}
         </div>
       </v-card-text>
 
@@ -33,7 +25,7 @@
       <v-card-text>
         <v-chip-group active-class="deep-purple accent-4 white--text" column>
           <v-chip
-            v-for="tag in project.tags"
+            v-for="tag in post.tags"
             :key="tag"
             filter
             filter-icon="mdi-close"
@@ -53,7 +45,7 @@
 
 <script lang="ts">
 import Vue from "vue";
-import { Project } from "@/types/project";
+import { Post } from "@/types/post";
 
 export default Vue.extend({
   name: "ProjectCard",
@@ -63,14 +55,14 @@ export default Vue.extend({
     currentFilter: "",
   }),
   props: {
-    project: {
-      type: Object as () => Project,
+    post: {
+      type: Object as () => Post,
       required: true,
     },
   },
   methods: {
     seeMore() {
-      this.$emit("show-details", this.project);
+      this.$emit("show-details", this.post);
     },
     updateFilter(tag: string) {
       this.currentFilter = tag;

@@ -1,31 +1,35 @@
 <template>
-  <v-row class="vo-control-bar">
-    <v-col cols="10">
-      <v-text-field
-        class="d-flex"
-        hide-details
-        prepend-icon="mdi-magnify"
-        single-line
-        v-model="tempSearchText"
-        clearable
-      ></v-text-field>
-    </v-col>
-    <v-spacer />
-    <v-col>
-      <v-btn-toggle
-        mandatory
-        v-model="tempDisplayToggle"
-        class="vo-toggle-buttons"
-      >
-        <v-btn>
-          <v-icon>mdi-view-grid</v-icon>
-        </v-btn>
-        <v-btn>
-          <v-icon>mdi-view-list</v-icon>
-        </v-btn>
-      </v-btn-toggle>
-    </v-col>
-  </v-row>
+  <v-slide-y-reverse-transition hide-on-leave>
+    <v-row class="vo-control-bar">
+      <v-col cols="10">
+        <v-text-field
+          class="d-flex"
+          prepend-icon="mdi-magnify"
+          v-model="tempSearchText"
+          clearable
+          outlined
+          color="primary"
+          label="Search"
+          placeholder="Type your search..."
+        ></v-text-field>
+      </v-col>
+      <v-spacer />
+      <v-col>
+        <v-btn-toggle
+          mandatory
+          v-model="tempDisplayToggle"
+          class="vo-toggle-buttons"
+        >
+          <v-btn>
+            <v-icon>mdi-view-grid</v-icon>
+          </v-btn>
+          <v-btn>
+            <v-icon>mdi-view-list</v-icon>
+          </v-btn>
+        </v-btn-toggle>
+      </v-col>
+    </v-row>
+  </v-slide-y-reverse-transition>
 </template>
 <script lang="ts">
 import { Vue, Component, PropSync } from "vue-property-decorator";

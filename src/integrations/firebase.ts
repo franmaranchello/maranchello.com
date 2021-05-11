@@ -1,8 +1,7 @@
 import { firebase } from "@firebase/app";
 import "@firebase/firestore";
 import "@firebase/storage";
-// import "@firebase/auth";
-// import "@firebase/functions";
+import "@firebase/auth";
 
 const config = {
   apiKey: process.env.VUE_APP_APIKEY,
@@ -16,16 +15,4 @@ const config = {
 
 firebase.initializeApp(config);
 
-// ! this will tell firestore to look at local emulator
-// if (location.hostname === "localhost") {
-//   firestore.settings({
-//     host: "localhost:8080",
-//     ssl: false,
-//   });
-// }
-
-export const firestore = firebase.firestore();
-export const storage = firebase.storage();
 export default firebase;
-// export const auth = firebase.auth();
-// export const functions = firebase.functions();

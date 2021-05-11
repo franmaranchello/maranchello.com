@@ -1,14 +1,14 @@
 <template>
   <div>
-    <v-app-bar color="primary" dark height="60" app>
+    <v-app-bar color="primary" dark height="60" app elevate-on-scroll>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-      <v-app-bar-title class="text-uppercase" v-text="currentRouteName">
+      <v-app-bar-title
+        class="text-uppercase flex text-center mr-14"
+        v-text="currentRouteName"
+      >
       </v-app-bar-title>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
     </v-app-bar>
     <v-navigation-drawer
       id="menu"
@@ -34,12 +34,19 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
+      <template v-slot:append>
+        <div v-if="drawer" class="pa-2">
+          <v-btn block @click="adminClick()"> {{ getAdminButton() }} </v-btn>
+        </div>
+      </template>
     </v-navigation-drawer>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 export default Vue.extend({
   name: "Menu",
@@ -62,7 +69,22 @@ export default Vue.extend({
   },
   methods: {
     route(name: string) {
-      this.$router.push(name);
+      let route = name.replace(/\s/g, "").toLowerCase();
+      if (this.$router.currentRoute.name?.toLowerCase() != route)
+        this.$router.push(route);
+    },
+    adminClick() {
+      let user = firebase.auth().currentUser;
+      if (!user) this.route("login");
+      else
+        firebase
+          .auth()
+          .signOut()
+          .then(() => this.route("/"));
+    },
+    getAdminButton() {
+      if (firebase.auth().currentUser) return "Log Out";
+      else return "Admin";
     },
   },
 });
