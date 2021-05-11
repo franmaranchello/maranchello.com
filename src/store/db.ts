@@ -5,7 +5,7 @@ import "@firebase/firestore";
 import "@firebase/storage";
 import "@firebase/auth";
 
-// This helper function pipes your types through a firestore converter
+// This helper function pipes custom types through a firestore converter
 const converter = <T>() => ({
   toFirestore: (data: Partial<T>) => data,
   fromFirestore: (snap: firebase.firestore.QueryDocumentSnapshot) =>
@@ -13,8 +13,8 @@ const converter = <T>() => ({
 });
 
 // This helper function exposes a 'typed' version of firestore().collection(collectionPath)
-// Pass it a collectionPath string as the path to the collection in firestore
-// Pass it a type argument representing the 'type' (schema) of the docs in the collection
+// Receives a collectionPath string as the path to the collection in firestore
+// Receives a type argument representing the 'type' (schema) of the docs in the collection
 const dataPoint = <T>(collectionPath: string) =>
   firebase.firestore().collection(collectionPath).withConverter(converter<T>());
 

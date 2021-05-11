@@ -4,11 +4,13 @@
       <v-col cols="10">
         <v-text-field
           class="d-flex"
-          hide-details
           prepend-icon="mdi-magnify"
-          single-line
           v-model="tempSearchText"
           clearable
+          outlined
+          color="primary"
+          label="Search"
+          placeholder="Type your search..."
         ></v-text-field>
       </v-col>
       <v-spacer />

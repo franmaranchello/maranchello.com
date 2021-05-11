@@ -69,6 +69,7 @@ export default Vue.extend({
           return [
             project.name,
             project.type,
+            project.description,
             ...project.tags,
             project.collection,
           ].some((field) =>

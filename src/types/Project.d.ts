@@ -8,5 +8,5 @@ export interface Project {
   collection: string;
   description: string;
   content: string;
-  gallery: string[];
+  gallery: firebase.storage.Reference[];
 }

@@ -12,16 +12,16 @@
           class="ma-8"
           width="100"
           color="primary"
-          @click="route('admin/posts')"
-          >Posts</v-btn
+          @click="route('admin/projects')"
+          >Projects</v-btn
         >
         <v-btn
           outlined
           class="ma-8"
           width="100"
           color="primary"
-          @click="route('admin/projects')"
-          >Projects</v-btn
+          @click="route('admin/posts')"
+          >Posts</v-btn
         >
       </v-row>
       <v-spacer></v-spacer>
