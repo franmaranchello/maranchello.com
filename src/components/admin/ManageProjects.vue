@@ -99,7 +99,7 @@ export default Vue.extend({
   data: () => ({
     project: {} as Project,
     date: new Date().toISOString().substr(0, 10),
-    files: [],
+    files: [] as File[],
     imageUrls: [] as any[],
   }),
   methods: {
@@ -114,22 +114,38 @@ export default Vue.extend({
         });
       });
     },
-    writeProject() {
+    createProject() {
+      let key = "";
+      this.project.date = firebase.firestore.Timestamp.fromDate(
+        new Date(this.date)
+      );
+      this.project.gallery = [];
       db.projects
         .add(this.project)
-        .then(() => alert("Project created successfully!"))
+        .then((data) => {
+          alert("Project created successfully!");
+          key = data.id;
+          return key;
+        })
+        .then((key) => {
+          this.files.forEach((file) => {
+            firebase
+              .storage()
+              .ref(`project-assets/${key}/${file.name}`)
+              .put(file)
+              .then((upload) => {
+                upload.ref.getDownloadURL().then((url) => {
+                  console.log("pushing url: ", url);
+                  db.projects.firestore.doc(key).update({
+                    gallery: firebase.firestore.FieldValue.arrayUnion(url),
+                  });
+                });
+              });
+          });
+        })
         .catch((error) => {
           console.error("Error creating project: ", error);
         });
-    },
-    createProject() {
-      (this.project.date = firebase.firestore.Timestamp.fromDate(
-        new Date(this.date)
-      )),
-        // this.files.forEach((file) => {
-        //   this.project.gallery.push(file);
-        // });
-        this.writeProject();
     },
   },
 });
