@@ -3,7 +3,7 @@
     <v-card id="details-container" class="ma-8" outlined>
       <v-row>
         <v-col>
-          <v-img src="..\assets\img\profile.jpg"
+          <v-img :src="imageSource"
             ><div class="fill-height bottom-gradient"></div
           ></v-img>
         </v-col>
@@ -30,16 +30,28 @@
 
 <script lang="ts">
 import Vue from "vue";
+import firebase from "firebase/app";
+
 export default Vue.extend({
   name: "About",
   data: () => ({
     description:
       "As an Architect that codes, I have broadened my skill set through a passion for technology and innovation. I believe technology is the future of architecture and the built world. \n\nAlways learning and leveraging cutting-edge technologies to seek new answers, I bring a holistic approach when facing new challenges. \n\nI'm currently involved in BIM, software and architecture products, projects, and implementations across scales, from design automation to full-fledged apps in several countries. \n\nI like to participate in every part of the business and design process, having a broad background and interests. I'm passionate about design & technology, especially finding common ground between the two. \n\nOther interests of mine include photography, investing, traveling and skiing.",
+    imageSource: "",
   }),
   methods: {
     goHome() {
       this.$router.push("/");
     },
+  },
+  mounted() {
+    firebase
+      .storage()
+      .ref("project-assets/default/profile.jpg")
+      .getDownloadURL()
+      .then((url) => {
+        return (this.imageSource = url);
+      });
   },
 });
 </script>

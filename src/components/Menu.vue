@@ -84,7 +84,7 @@ export default Vue.extend({
     },
     getAdminButton() {
       if (firebase.auth().currentUser) return "Log Out";
-      else return "Log In";
+      else return "Admin";
     },
   },
 });

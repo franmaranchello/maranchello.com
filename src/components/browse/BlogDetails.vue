@@ -32,13 +32,14 @@
           }}</v-list-item-subtitle>
           <v-spacer />
           <v-list-item-subtitle>{{ post.description }}</v-list-item-subtitle>
-          <v-list-item-content>{{ post.content }}</v-list-item-content>
+          <v-list-item-content
+            ><p>{{ post.content }}</p></v-list-item-content
+          >
         </v-list-item-content>
       </v-list-item>
 
       <v-card-actions>
         <v-btn outlined rounded @click="callClose"> Back </v-btn>
-        <v-btn outlined rounded> <v-icon>mdi-send</v-icon> </v-btn>
       </v-card-actions>
     </v-card>
   </v-slide-y-transition>

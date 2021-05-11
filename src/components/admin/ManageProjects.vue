@@ -79,6 +79,7 @@
           class="ma-8"
           width="100"
           color="primary"
+          :loading="isLoading"
           @click="createProject"
           >Create</v-btn
         >
@@ -101,6 +102,7 @@ export default Vue.extend({
     date: new Date().toISOString().substr(0, 10),
     files: [] as File[],
     imageUrls: [] as any[],
+    isLoading: false,
   }),
   methods: {
     updatePreviews() {
@@ -115,6 +117,7 @@ export default Vue.extend({
       });
     },
     createProject() {
+      this.isLoading = true;
       let key = "";
       this.project.date = firebase.firestore.Timestamp.fromDate(
         new Date(this.date)
@@ -123,7 +126,6 @@ export default Vue.extend({
       db.projects
         .add(this.project)
         .then((data) => {
-          alert("Project created successfully!");
           key = data.id;
           return key;
         })
@@ -142,6 +144,10 @@ export default Vue.extend({
                 });
               });
           });
+        })
+        .then(() => {
+          this.isLoading = false;
+          alert("Project created successfully!");
         })
         .catch((error) => {
           console.error("Error creating project: ", error);
