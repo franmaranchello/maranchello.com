@@ -46,9 +46,10 @@
           single-line
           full-width
         ></v-text-field>
+        <tiptap-vuetify v-model="project.content" :extensions="extensions" />
         <v-textarea
           v-model="project.content"
-          label="Content"
+          label="Content output"
           counter
           full-width
         ></v-textarea>
@@ -94,15 +95,58 @@ import Vue from "vue";
 import { Project } from "@/types/project";
 import db from "../../store/db";
 import firebase from "firebase/app";
+import {
+  TiptapVuetify,
+  Heading,
+  Bold,
+  Italic,
+  Strike,
+  Underline,
+  Code,
+  Paragraph,
+  BulletList,
+  OrderedList,
+  ListItem,
+  Link,
+  Blockquote,
+  HardBreak,
+  HorizontalRule,
+  History,
+} from "tiptap-vuetify";
 
 export default Vue.extend({
   name: "ManageProjects",
+  components: { TiptapVuetify },
   data: () => ({
     project: {} as Project,
     date: new Date().toISOString().substr(0, 10),
     files: [] as File[],
     imageUrls: [] as any[],
     isLoading: false,
+    extensions: [
+      Link,
+      History,
+      Blockquote,
+      Underline,
+      Strike,
+      Italic,
+      ListItem,
+      BulletList,
+      OrderedList,
+      [
+        Heading,
+        {
+          options: {
+            levels: [1, 2, 3],
+          },
+        },
+      ],
+      Bold,
+      Code,
+      HorizontalRule,
+      Paragraph,
+      HardBreak,
+    ],
   }),
   methods: {
     updatePreviews() {

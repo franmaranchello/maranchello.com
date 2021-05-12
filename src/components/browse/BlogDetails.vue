@@ -33,8 +33,8 @@
           <v-spacer />
           <v-list-item-subtitle>{{ post.description }}</v-list-item-subtitle>
           <v-list-item-content
-            ><p>{{ post.content }}</p></v-list-item-content
-          >
+            ><span v-html="post.content"
+          /></v-list-item-content>
         </v-list-item-content>
       </v-list-item>
 

@@ -1,6 +1,6 @@
 # maranchello.com
 
-A personal portfolio website using TypeScript, Vue, Vuetify and Firebase.
+A personal portfolio webapp using TypeScript, Vue, Vuetify and Firebase. It allows creating projects and posts under authentication.
 
 ## Project setup
 
@@ -18,6 +18,12 @@ npm run serve
 
 ```
 npm run build
+```
+
+### Compiles and deploys to firebase hosting
+
+```
+npm run deploy
 ```
 
 ### Lints and fixes files
