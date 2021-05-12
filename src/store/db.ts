@@ -22,6 +22,7 @@ const dataPoint = <T>(collectionPath: string) =>
 const db = {
   projects: dataPoint<Project>("projects"),
   posts: dataPoint<Post>("posts"),
+  general: dataPoint<any>("general"),
 };
 
 // Export helper
