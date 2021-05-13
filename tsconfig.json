@@ -24,7 +24,8 @@
     "src/**/*.vue",
     "tests/**/*.ts",
     "tests/**/*.tsx",
-    "src/integrations/firebase.ts"
+    "src/integrations/firebase.ts",
+    "src/plugins/markdown.js"
   ],
   "exclude": ["node_modules"]
 }

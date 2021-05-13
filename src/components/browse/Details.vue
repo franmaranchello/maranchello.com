@@ -29,7 +29,9 @@
             {{ project.name }}
           </v-list-item-title>
           <v-list-item-subtitle>{{ project.description }}</v-list-item-subtitle>
-          <v-list-item-content>{{ project.content }}</v-list-item-content>
+          <v-list-item-content
+            ><span v-html="project.content"
+          /></v-list-item-content>
         </v-list-item-content>
       </v-list-item>
 

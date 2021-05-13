@@ -34,9 +34,14 @@
           single-line
           full-width
         ></v-text-field>
+        <tiptap-vuetify
+          v-model="post.content"
+          :extensions="extensions"
+          :toolbar-attributes="toolbarAttrs"
+        />
         <v-textarea
           v-model="post.content"
-          label="Content"
+          label="Content output"
           counter
           full-width
         ></v-textarea>
@@ -82,18 +87,78 @@ import Vue from "vue";
 import { Post } from "@/types/post";
 import db from "../../store/db";
 import firebase from "firebase/app";
+import {
+  TiptapVuetify,
+  Heading,
+  Bold,
+  Italic,
+  Strike,
+  Underline,
+  Code,
+  Paragraph,
+  BulletList,
+  OrderedList,
+  ListItem,
+  Link,
+  Blockquote,
+  HardBreak,
+  HorizontalRule,
+  History,
+} from "tiptap-vuetify";
 
 export default Vue.extend({
   name: "ManagePosts",
+  components: { TiptapVuetify },
   data: () => ({
     post: {} as Post,
     date: new Date().toISOString().substr(0, 10),
     files: [] as File[],
     imageUrls: [] as any[],
     isLoading: false,
+    extensions: [
+      History,
+      Blockquote,
+      Underline,
+      Strike,
+      Italic,
+      ListItem,
+      Link,
+      BulletList,
+      OrderedList,
+      [
+        Heading,
+        {
+          options: {
+            levels: [1, 2, 3],
+          },
+        },
+      ],
+      Bold,
+      Code,
+      HorizontalRule,
+      Paragraph,
+      HardBreak,
+    ],
   }),
+  computed: {
+    toolbarAttrs(): unknown {
+      return this.$vuetify.theme.dark
+        ? { color: "black", dark: true }
+        : { color: "white", dark: false };
+    },
+  },
   methods: {
+    sortFiles() {
+      this.files.sort((a, b) =>
+        a.name.localeCompare(
+          b.name,
+          navigator.languages[0] || navigator.language,
+          { numeric: true, ignorePunctuation: true }
+        )
+      );
+    },
     updatePreviews() {
+      this.sortFiles();
       this.imageUrls = [];
       this.files.forEach((file) => {
         const fileReader = new FileReader();
@@ -118,6 +183,7 @@ export default Vue.extend({
           return key;
         })
         .then((key) => {
+          this.sortFiles();
           this.files.forEach((file) => {
             firebase
               .storage()

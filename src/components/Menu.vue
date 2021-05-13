@@ -20,7 +20,7 @@
     >
       <v-list>
         <v-list-item
-          v-for="item in items"
+          v-for="item in getItems()"
           :key="item.title"
           @click="route(item.title)"
         >
@@ -52,12 +52,6 @@ export default Vue.extend({
   name: "Menu",
   data: () => ({
     drawer: false,
-    items: [
-      { title: "Home", icon: "mdi-home-city" },
-      { title: "About", icon: "mdi-account" },
-      { title: "Projects", icon: "mdi-account" },
-      { title: "Blog", icon: "mdi-account-group-outline" },
-    ],
   }),
   computed: {
     height() {
@@ -68,10 +62,22 @@ export default Vue.extend({
     },
   },
   methods: {
+    getItems(): { title: string; icon: string }[] {
+      let items = [
+        { title: "Home", icon: "mdi-home-city" },
+        { title: "About", icon: "mdi-account" },
+        { title: "Projects", icon: "mdi-account" },
+        { title: "Blog", icon: "mdi-account-group-outline" },
+      ];
+      if (firebase.auth().currentUser) {
+        items.push({ title: "Admin", icon: "mdi-tune" });
+      }
+      return items;
+    },
     route(name: string) {
       let route = name.replace(/\s/g, "").toLowerCase();
       if (this.$router.currentRoute.name?.toLowerCase() != route)
-        this.$router.push(route);
+        this.$router.push(`/${route}`);
     },
     adminClick() {
       let user = firebase.auth().currentUser;
@@ -80,11 +86,12 @@ export default Vue.extend({
         firebase
           .auth()
           .signOut()
-          .then(() => this.route("/"));
+          .then(() => this.route(""));
     },
     getAdminButton() {
-      if (firebase.auth().currentUser) return "Log Out";
-      else return "Admin";
+      if (firebase.auth().currentUser) {
+        return "Log Out";
+      } else return "Admin";
     },
   },
 });

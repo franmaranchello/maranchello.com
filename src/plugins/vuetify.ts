@@ -1,9 +1,11 @@
 import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
+import { TiptapVuetifyPlugin } from "tiptap-vuetify";
+import "tiptap-vuetify/dist/main.css";
 
 Vue.use(Vuetify);
 
-export default new Vuetify({
+const vuetify = new Vuetify({
   theme: {
     dark: true,
     themes: {
@@ -20,3 +22,10 @@ export default new Vuetify({
     },
   },
 });
+
+Vue.use(TiptapVuetifyPlugin, {
+  vuetify: vuetify,
+  iconsGroup: "mdi",
+});
+
+export default vuetify;
