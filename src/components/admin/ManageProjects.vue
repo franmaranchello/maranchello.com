@@ -149,7 +149,17 @@ export default Vue.extend({
     ],
   }),
   methods: {
+    sortFiles() {
+      this.files.sort((a, b) =>
+        a.name.localeCompare(
+          b.name,
+          navigator.languages[0] || navigator.language,
+          { numeric: true, ignorePunctuation: true }
+        )
+      );
+    },
     updatePreviews() {
+      this.sortFiles();
       this.imageUrls = [];
       this.files.forEach((file) => {
         const fileReader = new FileReader();
@@ -174,6 +184,7 @@ export default Vue.extend({
           return key;
         })
         .then((key) => {
+          this.sortFiles();
           this.files.forEach((file) => {
             firebase
               .storage()
