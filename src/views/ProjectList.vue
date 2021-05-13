@@ -14,22 +14,22 @@
             <v-list-item-title>
               {{ project.name }}
             </v-list-item-title>
-            <div class="overline grey--text">
+            <div class="overline grey--text" v-if="getWindowWidth()">
               {{ project.type }} - {{ project.collection }}
             </div>
-            <v-list-item-subtitle class="ma-2">{{
+            <v-list-item-subtitle class="ma-2" v-if="getWindowWidth()">{{
               project.description
             }}</v-list-item-subtitle>
+            <v-list-item-action-text>
+              <v-btn block color="primary" @click="seeMore(project)" width="50">
+                <div class="black--text">See more</div>
+              </v-btn>
+            </v-list-item-action-text>
             <v-divider
               class="mt-2"
               v-if="projects.indexOf(project) < projects.length - 1"
             />
           </v-list-item-content>
-          <v-list-item-action-text>
-            <v-btn block color="secondary" @click="seeMore(project)">
-              <div class="black--text">See more</div>
-            </v-btn>
-          </v-list-item-action-text>
         </v-list-item>
       </v-list>
     </div>
@@ -55,6 +55,10 @@ export default Vue.extend({
   methods: {
     seeMore(project: Project) {
       this.$emit("show-details", project);
+    },
+    getWindowWidth() {
+      if (window.innerWidth > 400) return true;
+      else return false;
     },
   },
 });
