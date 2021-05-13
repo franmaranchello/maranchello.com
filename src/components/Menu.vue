@@ -71,11 +71,11 @@ export default Vue.extend({
     route(name: string) {
       let route = name.replace(/\s/g, "").toLowerCase();
       if (this.$router.currentRoute.name?.toLowerCase() != route)
-        this.$router.push(route);
+        this.$router.push(`/${route}`);
     },
     adminClick() {
       let user = firebase.auth().currentUser;
-      if (!user) this.route("login");
+      if (!user) this.route("/login");
       else
         firebase
           .auth()

@@ -46,7 +46,11 @@
           single-line
           full-width
         ></v-text-field>
-        <tiptap-vuetify v-model="project.content" :extensions="extensions" />
+        <tiptap-vuetify
+          v-model="project.content"
+          :extensions="extensions"
+          :toolbar-attributes="toolbarAttrs"
+        />
         <v-textarea
           v-model="project.content"
           label="Content output"
@@ -124,13 +128,13 @@ export default Vue.extend({
     imageUrls: [] as any[],
     isLoading: false,
     extensions: [
-      Link,
       History,
       Blockquote,
       Underline,
       Strike,
       Italic,
       ListItem,
+      Link,
       BulletList,
       OrderedList,
       [
@@ -148,6 +152,13 @@ export default Vue.extend({
       HardBreak,
     ],
   }),
+  computed: {
+    toolbarAttrs(): unknown {
+      return this.$vuetify.theme.dark
+        ? { color: "black", dark: true }
+        : { color: "white", dark: false };
+    },
+  },
   methods: {
     sortFiles() {
       this.files.sort((a, b) =>

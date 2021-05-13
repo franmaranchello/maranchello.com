@@ -25,7 +25,7 @@ const vuetify = new Vuetify({
 
 Vue.use(TiptapVuetifyPlugin, {
   vuetify: vuetify,
-  iconsGroup: "md",
+  iconsGroup: "mdi",
 });
 
 export default vuetify;
