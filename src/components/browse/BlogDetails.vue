@@ -51,6 +51,18 @@ import { Post } from "../../types/post";
 
 export default Vue.extend({
   name: "BlogDetails",
+  metaInfo() {
+    return {
+      title: `Francisco Maranchello - ${this.post.name}`,
+      meta: [
+        { name: "description", content: `${this.post.description}` },
+        { property: "og:title", content: "Francisco Maranchello" },
+        { property: "og:site_name", content: "Francisco Maranchello" },
+        { property: "og:type", content: "website" },
+        { name: "robots", content: "index,follow" },
+      ],
+    };
+  },
   data: () => ({
     defaultImage:
       "https://tecnne.com/wp-content/uploads/2020/02/OMA-Gwanggyo-tecnne....jpg",

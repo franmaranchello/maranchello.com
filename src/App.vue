@@ -16,6 +16,22 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "App",
+  metaInfo() {
+    return {
+      title: "Francisco Maranchello",
+      meta: [
+        {
+          name: "description",
+          content:
+            "Personal website and portfolio for Francisco Maranchello, an Architect, Software Developer and Project Manager.",
+        },
+        { property: "og:title", content: "Francisco Maranchello" },
+        { property: "og:site_name", content: "Francisco Maranchello" },
+        { property: "og:type", content: "website" },
+        { name: "robots", content: "index,follow" },
+      ],
+    };
+  },
 });
 </script>
 <style lang="scss" scoped>
