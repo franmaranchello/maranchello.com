@@ -104,11 +104,7 @@ export default Vue.extend({
       this.$emit("toggle-change", this.dark);
     },
     setTheme() {
-      const currentDate = new Date();
-      if (currentDate.getHours() > 17 || currentDate.getHours() < 8)
-        this.dark = true;
-      else this.dark = false;
-      return this.toggleDark();
+      this.dark = this.$vuetify.theme.dark;
     },
   },
   mounted() {

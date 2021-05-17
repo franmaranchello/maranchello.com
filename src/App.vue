@@ -17,10 +17,24 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "App",
+  data: () => ({
+    dark: false,
+  }),
   methods: {
     toggleMode(dark: boolean) {
-      this.$vuetify.theme.dark = dark;
+      this.dark = dark;
+      this.$vuetify.theme.dark = this.dark;
     },
+    setTheme() {
+      const currentDate = new Date();
+      if (currentDate.getHours() > 17 || currentDate.getHours() < 8)
+        this.dark = true;
+      else this.dark = false;
+      return this.toggleMode(this.dark);
+    },
+  },
+  mounted() {
+    this.setTheme();
   },
   metaInfo() {
     return {
