@@ -7,6 +7,7 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase/app";
+import VueMeta from "vue-meta";
 import "firebase/auth";
 
 Vue.config.productionTip = false;
@@ -31,3 +32,5 @@ firebase.auth().onAuthStateChanged((user) => {
     app.$store.dispatch("getUserData", user);
   }
 });
+
+Vue.use(VueMeta);
