@@ -1,7 +1,8 @@
 <template>
   <v-app id="app">
     <v-main id="router">
-      <router-view id="taskbar" name="menu" class="dark"> </router-view>
+      <router-view id="taskbar" name="menu" @toggle-change="toggleMode">
+      </router-view>
       <router-view
         id="content"
         name="main"
@@ -16,6 +17,11 @@ import Vue from "vue";
 
 export default Vue.extend({
   name: "App",
+  methods: {
+    toggleMode(dark: boolean) {
+      this.$vuetify.theme.dark = dark;
+    },
+  },
   metaInfo() {
     return {
       title: "Francisco Maranchello",
@@ -38,7 +44,7 @@ export default Vue.extend({
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap");
 .v-application {
   font-family: "Poppins", sans-serif;
-  font-weight: 100;
+  font-weight: 500;
   .title {
     // To pin point specific classes of some components
     font-size: xx-large !important;

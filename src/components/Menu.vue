@@ -36,6 +36,12 @@
       </v-list>
       <template v-slot:append>
         <div v-if="drawer" class="pa-2">
+          <v-switch
+            label="Dark mode"
+            color="orange"
+            v-model="dark"
+            @change="toggleDark()"
+          />
           <v-btn block @click="adminClick()"> {{ getAdminButton() }} </v-btn>
         </div>
       </template>
@@ -52,6 +58,7 @@ export default Vue.extend({
   name: "Menu",
   data: () => ({
     drawer: false,
+    dark: false,
   }),
   computed: {
     height() {
@@ -93,6 +100,19 @@ export default Vue.extend({
         return "Log Out";
       } else return "Admin";
     },
+    toggleDark() {
+      this.$emit("toggle-change", this.dark);
+    },
+    setTheme() {
+      const currentDate = new Date();
+      if (currentDate.getHours() > 17 || currentDate.getHours() < 8)
+        this.dark = true;
+      else this.dark = false;
+      return this.toggleDark();
+    },
+  },
+  mounted() {
+    this.setTheme();
   },
 });
 </script>

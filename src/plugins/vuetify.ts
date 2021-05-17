@@ -19,6 +19,15 @@ const vuetify = new Vuetify({
         warning: "#F44336", //red
         background: "0D1117", //blue grey
       },
+      light: {
+        primary: "#FEA82F",
+        secondary: "#424242",
+        accent: "#82B1FF",
+        error: "#FF5252",
+        info: "#2196F3",
+        success: "#4CAF50",
+        warning: "#FFC107",
+      },
     },
   },
 });
