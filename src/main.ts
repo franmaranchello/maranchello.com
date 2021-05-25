@@ -12,24 +12,16 @@ import "firebase/auth";
 
 Vue.config.productionTip = false;
 
-let app = new Vue({
-  router,
-  store,
-  vuetify,
-  render: (h) => h(App),
-}).$mount("#app");
+let app: Vue;
 
-firebase.auth().onAuthStateChanged((user) => {
+firebase.auth().onAuthStateChanged(() => {
   if (!app) {
     app = new Vue({
       router,
       store,
+      vuetify,
       render: (h) => h(App),
     }).$mount("#app");
-  }
-
-  if (user) {
-    app.$store.dispatch("getUserData", user);
   }
 });
 
