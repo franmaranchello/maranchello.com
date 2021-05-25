@@ -115,9 +115,7 @@ router.beforeEach((to, from, next) => {
       next();
     } else {
       alert("You're not an admin!");
-      next({
-        path: "/",
-      });
+      next(from.fullPath);
     }
   } else {
     next();

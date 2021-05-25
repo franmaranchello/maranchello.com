@@ -1,6 +1,7 @@
 import firebase from "firebase";
 import { Project } from "@/types/project";
 import { Post } from "@/types/post";
+import { User } from "@/types/user";
 import "@firebase/firestore";
 import "@firebase/storage";
 import "@firebase/auth";
@@ -23,6 +24,7 @@ const db = {
   projects: dataPoint<Project>("projects"),
   posts: dataPoint<Post>("posts"),
   general: dataPoint<any>("general"),
+  users: dataPoint<User>("users"),
 };
 
 // Export helper
