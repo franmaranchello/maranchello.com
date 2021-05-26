@@ -89,11 +89,7 @@ export default Vue.extend({
     adminClick() {
       let user = firebase.auth().currentUser;
       if (!user) this.route("login");
-      else
-        firebase
-          .auth()
-          .signOut()
-          .then(() => this.route(""));
+      else this.$store.dispatch("logout");
     },
     getAdminButton() {
       if (firebase.auth().currentUser) {
