@@ -30,8 +30,7 @@ firebase.auth().onAuthStateChanged(async (user) => {
     }).$mount("#app");
   }
   if (user) {
-    const userProfile = await db.users.doc(user.uid).get();
-    store.commit("setUserProfile", userProfile.data());
+    store.dispatch("fetchUserProfile", user);
   }
 });
 

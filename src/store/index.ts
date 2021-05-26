@@ -25,7 +25,7 @@ export default new Vuex.Store({
     async fetchUserProfile({ commit }, user) {
       const userProfile = await db.users.doc(user.uid).get();
       commit("setUserProfile", userProfile.data());
-      router.push("/projects");
+      if (router.currentRoute.path == "/login") router.push("/projects");
     },
     async signUp({ dispatch }, form) {
       const { user } = await firebase
