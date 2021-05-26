@@ -1,5 +1,6 @@
 import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
+import VueGtag from "vue-gtag";
 import firebase from "firebase/app";
 import "firebase/auth";
 import Menu from "../components/Menu.vue";
@@ -121,5 +122,15 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
+Vue.use(
+  VueGtag,
+  {
+    config: { id: "G-0X5P47WPCF" },
+    appName: "maranchello-website",
+    pageTrackerScreenviewEnabled: true,
+  },
+  router
+);
 
 export default router;
