@@ -41,6 +41,11 @@ export default new Vuex.Store({
       });
       dispatch("fetchUserProfile", user);
     },
+    async logout({ commit }) {
+      await firebase.auth().signOut();
+      commit("setUserProfile", {});
+      router.push("/");
+    },
   },
   modules: {},
 });

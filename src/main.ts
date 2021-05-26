@@ -8,13 +8,19 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase/app";
 import VueMeta from "vue-meta";
+import db from "./store/db";
 import "firebase/auth";
 
 Vue.config.productionTip = false;
 
-let app: Vue;
+let app = new Vue({
+  router,
+  store,
+  vuetify,
+  render: (h) => h(App),
+}).$mount("#app");
 
-firebase.auth().onAuthStateChanged(() => {
+firebase.auth().onAuthStateChanged(async (user) => {
   if (!app) {
     app = new Vue({
       router,
@@ -22,6 +28,10 @@ firebase.auth().onAuthStateChanged(() => {
       vuetify,
       render: (h) => h(App),
     }).$mount("#app");
+  }
+  if (user) {
+    const userProfile = await db.users.doc(user.uid).get();
+    store.commit("setUserProfile", userProfile.data());
   }
 });
 
