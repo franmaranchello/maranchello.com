@@ -32,8 +32,9 @@
         class="ma-8"
         width="100"
         color="primary"
-        @click="route('blog')"
-        >Blog</v-btn
+        href="https://maranchello.gumroad.com/"
+        target="_blank"
+        >Products</v-btn
       >
     </v-row>
     <v-spacer></v-spacer>
