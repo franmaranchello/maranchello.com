@@ -6,22 +6,22 @@
         <v-img :src="imageSource"></v-img>
       </v-avatar>
     </v-row>
-    <v-row align="center" justify="center" class="ma-8">
-      <div id="name">Francisco Maranchello</div>
+    <v-row align="center" justify="center" class="ma-2">
+      <div id="name" align="center">Francisco Maranchello</div>
     </v-row>
     <v-row align="center" justify="center" class="ma-2">
-      <div id="text">
+      <div id="text" align="center">
         <p>Architect, Software Developer, and Entrepreneur</p>
       </div>
     </v-row>
-    <v-row align="center" justify="center" class="ma-2">
-      <div id="text">
+    <v-row align="center" justify="center">
+      <div id="text" align="center">
         <p v-html="linkText"></p></div
     ></v-row>
     <v-row align="center" justify="center">
       <v-btn
         outlined
-        class="ma-8"
+        class="ma-4"
         width="100"
         color="primary"
         @click="route('about')"
@@ -29,7 +29,7 @@
       >
       <v-btn
         outlined
-        class="ma-8"
+        class="ma-4"
         width="100"
         color="primary"
         @click="route('projects')"
@@ -37,7 +37,7 @@
       >
       <v-btn
         outlined
-        class="ma-8"
+        class="ma-4"
         width="100"
         color="primary"
         href="https://maranchello.gumroad.com/"
@@ -45,10 +45,9 @@
         >Products</v-btn
       >
     </v-row>
-    <v-spacer></v-spacer>
-    <v-row align="center" justify="center">
+    <v-row align="center" justify="center" class="ma-2">
       <v-btn
-        class="ma-8"
+        class="ma-2"
         fab
         dark
         small
@@ -59,7 +58,7 @@
         <font-awesome-icon icon="fa-brands fa-instagram" size="2xl" />
       </v-btn>
       <v-btn
-        class="ma-8"
+        class="ma-2"
         fab
         dark
         small
@@ -70,7 +69,7 @@
         <font-awesome-icon icon="fa-brands fa-linkedin" size="2xl" />
       </v-btn>
       <v-btn
-        class="ma-8"
+        class="ma-2"
         fab
         dark
         small
@@ -82,7 +81,7 @@
       </v-btn>
 
       <v-btn
-        class="ma-8"
+        class="ma-2"
         fab
         dark
         small
@@ -93,7 +92,7 @@
         <font-awesome-icon icon="fa-brands fa-medium" size="2xl" />
       </v-btn>
     </v-row>
-    <v-row align="center" justify="center" class="ma-8">
+    <v-row align="center" justify="center" class="ma-4">
       <div class="grey--text text-center">
         ©{{ currentYear }} Francisco Maranchello. View the code for this webapp
         on
