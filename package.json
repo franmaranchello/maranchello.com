@@ -9,6 +9,12 @@
     "deploy": "npm run build && firebase deploy"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.4.0",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
+    "@fortawesome/free-brands-svg-icons": "^6.4.0",
+    "@fortawesome/free-regular-svg-icons": "^6.4.0",
+    "@fortawesome/free-solid-svg-icons": "^6.4.0",
+    "@fortawesome/vue-fontawesome": "^2.0.10",
     "@tiptap/starter-kit": "^2.0.0-beta.52",
     "@tiptap/vue-2": "^2.0.0-beta.27",
     "axios": "^0.21.1",
@@ -22,7 +28,7 @@
     "vue-meta": "^2.4.0",
     "vue-property-decorator": "^9.1.2",
     "vue-router": "^3.2.0",
-    "vuetify": "^2.4.0",
+    "vuetify": "2.4.0",
     "vuex": "^3.6.2"
   },
   "devDependencies": {

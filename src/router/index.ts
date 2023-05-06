@@ -106,7 +106,7 @@ const router = new VueRouter({
 const DEFAULT_TITLE = "Francisco Maranchello";
 router.afterEach((to, _from) => {
   Vue.nextTick(() => {
-    document.title = to.meta.title || DEFAULT_TITLE;
+    document.title = to.meta?.title || DEFAULT_TITLE;
   });
 });
 

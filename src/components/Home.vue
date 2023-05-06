@@ -48,7 +48,7 @@
         href="https://www.instagram.com/franmaranchello/"
         target="_blank"
       >
-        <v-icon color="background"> mdi-instagram </v-icon>
+        <font-awesome-icon icon="fa-brands fa-instagram" size="2xl" />
       </v-btn>
       <v-btn
         class="ma-8"
@@ -59,7 +59,7 @@
         href="https://www.linkedin.com/in/franmaranchello/"
         target="_blank"
       >
-        <v-icon color="background"> mdi-linkedin </v-icon>
+        <font-awesome-icon icon="fa-brands fa-linkedin" size="2xl" />
       </v-btn>
       <v-btn
         class="ma-8"
@@ -70,7 +70,19 @@
         href="https://github.com/franmaranchello"
         target="_blank"
       >
-        <v-icon color="background"> mdi-github </v-icon>
+        <font-awesome-icon icon="fa-brands fa-github" size="2xl" />
+      </v-btn>
+
+      <v-btn
+        class="ma-8"
+        fab
+        dark
+        small
+        color="primary"
+        href="https://medium.com/@franmaranchello"
+        target="_blank"
+      >
+        <font-awesome-icon icon="fa-brands fa-medium" size="2xl" />
       </v-btn>
     </v-row>
     <v-row align="center" justify="center" class="ma-8">

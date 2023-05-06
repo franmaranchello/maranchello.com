@@ -71,13 +71,12 @@ export default Vue.extend({
   methods: {
     getItems(): { title: string; icon: string }[] {
       let items = [
-        { title: "Home", icon: "mdi-home-city" },
-        { title: "About", icon: "mdi-account" },
-        { title: "Projects", icon: "mdi-account" },
-        { title: "Blog", icon: "mdi-account-group-outline" },
+        { title: "Home", icon: "fa-solid fa-house" },
+        { title: "About", icon: "fa-solid fa-circle-info" },
+        { title: "Projects", icon: "fa-solid fa-bars-progress" },
       ];
       if (firebase.auth().currentUser) {
-        items.push({ title: "Admin", icon: "mdi-tune" });
+        items.push({ title: "Admin", icon: "fa-solid fa-toolbox" });
       }
       return items;
     },

@@ -4,7 +4,7 @@
       <v-col cols="10">
         <v-text-field
           class="d-flex"
-          prepend-icon="mdi-magnify"
+          prepend-icon="fa-solid fa-magnifying-glass"
           v-model="tempSearchText"
           clearable
           outlined
@@ -21,10 +21,10 @@
           class="vo-toggle-buttons"
         >
           <v-btn>
-            <v-icon>mdi-view-grid</v-icon>
+            <font-awesome-icon icon="fa-solid fa-grip-vertical" size="xl" />
           </v-btn>
           <v-btn>
-            <v-icon>mdi-view-list</v-icon>
+            <font-awesome-icon icon="fa-solid fa-list" size="xl" />
           </v-btn>
         </v-btn-toggle>
       </v-col>

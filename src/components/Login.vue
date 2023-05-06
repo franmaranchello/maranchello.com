@@ -9,7 +9,8 @@
       dark
       width="40%"
     >
-      <v-icon left dark color="white"> mdi-google </v-icon>
+      <font-awesome-icon left icon="fa-brands fa-google" size="xl" />
+      <span class="ml-2"></span>
       <span class="mr-4"> Sign in with Google </span>
     </v-btn>
   </div>
