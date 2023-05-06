@@ -9,7 +9,15 @@
     <v-row align="center" justify="center" class="ma-8">
       <div id="name">Francisco Maranchello</div>
     </v-row>
-    <v-spacer></v-spacer>
+    <v-row align="center" justify="center" class="ma-2">
+      <div id="text">
+        <p>Architect, Software Developer, and Entrepreneur</p>
+      </div>
+    </v-row>
+    <v-row align="center" justify="center" class="ma-2">
+      <div id="text">
+        <p v-html="linkText"></p></div
+    ></v-row>
     <v-row align="center" justify="center">
       <v-btn
         outlined
@@ -109,6 +117,8 @@ export default Vue.extend({
   name: "Home",
   data: () => ({
     imageSource: "",
+    linkText:
+      "Currently having fun as COO at <a href='https://e-verse.com' target=_blank> e-verse</a>",
   }),
   computed: {
     currentYear() {
@@ -137,5 +147,10 @@ export default Vue.extend({
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: xx-large;
+}
+#text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: medium;
 }
 </style>
