@@ -40,8 +40,7 @@
         class="ma-4"
         width="100"
         color="primary"
-        href="https://maranchello.gumroad.com/"
-        target="_blank"
+        href="https://products.maranchello.com"
         >Products</v-btn
       >
     </v-row>
