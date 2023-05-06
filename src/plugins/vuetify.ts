@@ -2,10 +2,14 @@ import Vue from "vue";
 import Vuetify from "vuetify/lib/framework";
 import { TiptapVuetifyPlugin } from "tiptap-vuetify";
 import "tiptap-vuetify/dist/main.css";
+import "@fortawesome/fontawesome-free/css/all.css";
 
 Vue.use(Vuetify);
 
 const vuetify = new Vuetify({
+  icons: {
+    iconfont: "fa",
+  },
   theme: {
     dark: true,
     themes: {
@@ -34,7 +38,7 @@ const vuetify = new Vuetify({
 
 Vue.use(TiptapVuetifyPlugin, {
   vuetify: vuetify,
-  iconsGroup: "mdi",
+  iconsGroup: "fa",
 });
 
 export default vuetify;

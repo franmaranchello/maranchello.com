@@ -36,7 +36,7 @@
             v-for="tag in project.tags"
             :key="tag"
             filter
-            filter-icon="mdi-close"
+            filter-icon="fa-solid fa-xmark"
             @input="filterByTag"
             @click="updateFilter(tag)"
             >{{ tag }}</v-chip

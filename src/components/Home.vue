@@ -9,7 +9,15 @@
     <v-row align="center" justify="center" class="ma-8">
       <div id="name">Francisco Maranchello</div>
     </v-row>
-    <v-spacer></v-spacer>
+    <v-row align="center" justify="center" class="ma-2">
+      <div id="text">
+        <p>Architect, Software Developer, and Entrepreneur</p>
+      </div>
+    </v-row>
+    <v-row align="center" justify="center" class="ma-2">
+      <div id="text">
+        <p v-html="linkText"></p></div
+    ></v-row>
     <v-row align="center" justify="center">
       <v-btn
         outlined
@@ -32,8 +40,9 @@
         class="ma-8"
         width="100"
         color="primary"
-        @click="route('blog')"
-        >Blog</v-btn
+        href="https://maranchello.gumroad.com/"
+        target="_blank"
+        >Products</v-btn
       >
     </v-row>
     <v-spacer></v-spacer>
@@ -47,7 +56,7 @@
         href="https://www.instagram.com/franmaranchello/"
         target="_blank"
       >
-        <v-icon color="background"> mdi-instagram </v-icon>
+        <font-awesome-icon icon="fa-brands fa-instagram" size="2xl" />
       </v-btn>
       <v-btn
         class="ma-8"
@@ -58,7 +67,7 @@
         href="https://www.linkedin.com/in/franmaranchello/"
         target="_blank"
       >
-        <v-icon color="background"> mdi-linkedin </v-icon>
+        <font-awesome-icon icon="fa-brands fa-linkedin" size="2xl" />
       </v-btn>
       <v-btn
         class="ma-8"
@@ -69,7 +78,19 @@
         href="https://github.com/franmaranchello"
         target="_blank"
       >
-        <v-icon color="background"> mdi-github </v-icon>
+        <font-awesome-icon icon="fa-brands fa-github" size="2xl" />
+      </v-btn>
+
+      <v-btn
+        class="ma-8"
+        fab
+        dark
+        small
+        color="primary"
+        href="https://medium.com/@franmaranchello"
+        target="_blank"
+      >
+        <font-awesome-icon icon="fa-brands fa-medium" size="2xl" />
       </v-btn>
     </v-row>
     <v-row align="center" justify="center" class="ma-8">
@@ -96,6 +117,8 @@ export default Vue.extend({
   name: "Home",
   data: () => ({
     imageSource: "",
+    linkText:
+      "Currently having fun as COO at <a href='https://e-verse.com' target=_blank> e-verse</a>",
   }),
   computed: {
     currentYear() {
@@ -124,5 +147,10 @@ export default Vue.extend({
   font-family: "Poppins", sans-serif;
   font-weight: 200;
   font-size: xx-large;
+}
+#text {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-size: medium;
 }
 </style>
