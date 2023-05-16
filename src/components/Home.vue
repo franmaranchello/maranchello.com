@@ -40,6 +40,14 @@
         class="ma-4"
         width="100"
         color="primary"
+        href="https://blog.maranchello.com"
+        >Blog</v-btn
+      >
+      <v-btn
+        outlined
+        class="ma-4"
+        width="100"
+        color="primary"
         href="https://products.maranchello.com"
         >Products</v-btn
       >
