@@ -98,6 +98,17 @@
       >
         <font-awesome-icon icon="fa-brands fa-medium" size="2xl" />
       </v-btn>
+      <v-btn
+        class="ma-2"
+        fab
+        dark
+        small
+        color="primary"
+        href="https://twitter.com/franmaranchello"
+        target="_blank"
+      >
+        <font-awesome-icon icon="fa-brands fa-twitter" size="2xl" />
+      </v-btn>
     </v-row>
     <v-row align="center" justify="center" class="ma-4">
       <div class="grey--text text-center">
