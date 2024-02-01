@@ -40,7 +40,7 @@
         class="ma-4"
         width="100"
         color="primary"
-        href="https://blog.maranchello.com"
+        href="https://maranchello.substack.com/"
         >Blog</v-btn
       >
       <v-btn
