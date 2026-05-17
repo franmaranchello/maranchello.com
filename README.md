@@ -42,3 +42,16 @@ See [TESTING.md](TESTING.md) for testing conventions.
 ```bash
 npm run deploy
 ```
+
+GitHub Actions also deploys on pushes to `main`. The deploy workflow expects these repository secrets:
+
+- `FIREBASE_TOKEN`
+- `NUXT_PUBLIC_FIREBASE_API_KEY`
+- `NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NUXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NUXT_PUBLIC_FIREBASE_APP_ID`
+- `NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID`
+
+Set the optional `NUXT_PUBLIC_SITE_URL` repository variable to override the canonical site URL.

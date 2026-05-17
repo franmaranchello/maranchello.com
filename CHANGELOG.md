@@ -13,6 +13,7 @@ All notable changes to this project are documented in this file.
 
 - Added Vitest unit tests for content normalization helpers.
 - Added testing documentation, local test commands, and a GitHub Actions verification workflow.
+- Added a GitHub Actions deployment workflow for pushes to `main`.
 
 ### Changed
 
@@ -20,6 +21,8 @@ All notable changes to this project are documented in this file.
 - Firebase Hosting now deploys the Nuxt static output from `.output/public`.
 - The admin editor now uses Vue 3-compatible HTML content fields.
 - Firestore and Storage writes are now restricted to the portfolio admin UID.
+- The legacy `/home` URL now renders the homepage instead of returning a 404.
+- Admin gallery uploads now preserve numeric filename ordering.
 
 ### Removed
 

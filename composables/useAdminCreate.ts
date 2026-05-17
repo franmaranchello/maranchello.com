@@ -22,9 +22,9 @@ interface CreatePostInput {
   files: File[];
 }
 
-const sortFiles = (files: File[]) =>
+export const sortFilesByName = (files: File[]) =>
   [...files].sort((a, b) =>
-    a.name.localeCompare(navigator.languages[0] || navigator.language, undefined, {
+    a.name.localeCompare(b.name, navigator.languages[0] || navigator.language, {
       ignorePunctuation: true,
       numeric: true,
     })
@@ -34,7 +34,7 @@ const uploadGallery = async (basePath: string, docId: string, files: File[]) => 
   const storage = getStorage(getFirebaseApp());
   const uploadedUrls: string[] = [];
 
-  for (const file of sortFiles(files)) {
+  for (const file of sortFilesByName(files)) {
     const fileRef = storageRef(storage, `${basePath}/${docId}/${file.name}`);
     const upload = await uploadBytes(fileRef, file);
     uploadedUrls.push(await getDownloadURL(upload.ref));
