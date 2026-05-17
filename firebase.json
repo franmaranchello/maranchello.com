@@ -11,7 +11,17 @@
       "**/node_modules/**"
     ],
     "cleanUrls": true,
-    "trailingSlash": false
+    "trailingSlash": false,
+    "rewrites": [
+      {
+        "source": "/projects/**",
+        "destination": "/200.html"
+      },
+      {
+        "source": "/blog/**",
+        "destination": "/200.html"
+      }
+    ]
   },
   "emulators": {
     "firestore": {
