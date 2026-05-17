@@ -27,6 +27,16 @@ npm run generate
 
 The generated Firebase Hosting output is written to `.output/public`.
 
+## Testing
+
+```bash
+npm run test
+npm run typecheck
+npm run generate
+```
+
+See [TESTING.md](TESTING.md) for testing conventions.
+
 ## Deploy
 
 ```bash

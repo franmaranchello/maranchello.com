@@ -6,17 +6,20 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
-- Migrated the portfolio to Nuxt 4 and Vue 3 with prerendered public pages for SEO.
-- Added Firebase modular SDK content reads, auth, and admin create flows.
+- The portfolio now runs on Nuxt 4 and Vue 3 with prerendered public pages for better SEO.
+- Projects, posts, auth, and admin creation flows now use the modern Firebase modular SDK.
+
+### For contributors
+
 - Added Vitest unit tests for content normalization helpers.
-- Added project testing documentation and local test commands.
+- Added testing documentation, local test commands, and a GitHub Actions verification workflow.
 
 ### Changed
 
-- Updated the homepage headline to "Cofounder at Radical Labs."
-- Updated Firebase Hosting to deploy the Nuxt static output from `.output/public`.
-- Replaced the Vue 2/Vuetify admin editor with HTML content fields compatible with Vue 3.
-- Restricted Firestore and Storage writes to the portfolio admin UID.
+- The homepage headline now says "Cofounder at Radical Labs."
+- Firebase Hosting now deploys the Nuxt static output from `.output/public`.
+- The admin editor now uses Vue 3-compatible HTML content fields.
+- Firestore and Storage writes are now restricted to the portfolio admin UID.
 
 ### Removed
 
