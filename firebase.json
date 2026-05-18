@@ -12,13 +12,31 @@
     ],
     "cleanUrls": true,
     "trailingSlash": false,
-    "rewrites": [
+    "redirects": [
       {
-        "source": "/projects/**",
-        "destination": "/200.html"
+        "source": "/blog",
+        "destination": "https://maranchello.substack.com/",
+        "type": 301
       },
       {
         "source": "/blog/**",
+        "destination": "https://maranchello.substack.com/",
+        "type": 301
+      },
+      {
+        "source": "/products",
+        "destination": "https://radical-labs.co/#products",
+        "type": 301
+      },
+      {
+        "source": "/products/**",
+        "destination": "https://radical-labs.co/#products",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/projects/**",
         "destination": "/200.html"
       }
     ]

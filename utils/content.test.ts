@@ -3,7 +3,6 @@ import {
   formatDate,
   normalizeGallery,
   normalizeTags,
-  postFromDoc,
   projectFromDoc,
   toDate,
   toIsoDate,
@@ -67,19 +66,6 @@ describe("content utilities", () => {
       description: "Modern portfolio",
       content: "<p>Hello</p>",
       gallery: ["/cover.jpg"],
-    });
-  });
-
-  it("maps post documents with safe empty defaults", () => {
-    expect(postFromDoc("post-1", {})).toEqual({
-      id: "post-1",
-      name: "Untitled post",
-      date: "",
-      year: null,
-      tags: [],
-      description: "",
-      content: "",
-      gallery: [],
     });
   });
 });

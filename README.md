@@ -2,7 +2,7 @@
 
 Personal portfolio for Francisco Maranchello, built with Nuxt 4, Vue 3, TypeScript, and Firebase.
 
-The public portfolio pages are rendered by Nuxt so crawlers receive real HTML instead of waiting for a client-only Vue app to load. Firestore remains the source for projects, posts, and about-page content, while Firebase Auth/Storage are used by the hidden admin tools.
+The public portfolio pages are rendered by Nuxt so crawlers receive real HTML instead of waiting for a client-only Vue app to load. Firestore remains the source for projects and about-page content, while Firebase Auth/Storage are used by the hidden admin tools.
 
 ## Setup
 

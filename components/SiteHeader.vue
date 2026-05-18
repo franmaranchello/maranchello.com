@@ -6,8 +6,8 @@
     <nav class="nav" aria-label="Primary navigation">
       <NuxtLink to="/about">About</NuxtLink>
       <NuxtLink to="/projects">Projects</NuxtLink>
-      <NuxtLink to="/blog">Blog</NuxtLink>
-      <a href="https://products.maranchello.com">Products</a>
+      <a href="https://maranchello.substack.com/">Blog</a>
+      <a href="https://radical-labs.co/#products">Products</a>
       <button class="theme-toggle" type="button" aria-label="Toggle dark mode" @click="toggleTheme">
         <FontAwesomeIcon :icon="dark ? ['fas', 'sun'] : ['fas', 'moon']" />
       </button>
@@ -54,11 +54,16 @@ const toggleTheme = () => {
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--text);
+  font-family: var(--mono-font);
   font-weight: 700;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .brand:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 22px color-mix(in srgb, var(--primary) 24%, transparent);
   text-decoration: none;
+  transform: translateY(-1px);
 }
 
 .nav {
@@ -72,6 +77,7 @@ const toggleTheme = () => {
   color: var(--muted);
   font-size: 0.92rem;
   font-weight: 500;
+  transition: color 160ms ease;
 }
 
 .nav a.router-link-active {
@@ -88,6 +94,13 @@ const toggleTheme = () => {
   border-radius: 50%;
   background: var(--surface);
   color: var(--text);
+  transition: background 160ms ease, border-color 160ms ease, color 160ms ease, transform 160ms ease;
+}
+
+.theme-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 720px) {

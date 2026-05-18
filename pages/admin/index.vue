@@ -6,7 +6,6 @@
     <AdminGuard>
       <div class="admin-actions">
         <NuxtLink class="button" to="/admin/projects">Create project</NuxtLink>
-        <NuxtLink class="button" to="/admin/posts">Create post</NuxtLink>
         <button class="button" type="button" @click="handleLogout">Log out</button>
       </div>
     </AdminGuard>

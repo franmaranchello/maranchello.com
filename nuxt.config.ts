@@ -4,6 +4,7 @@ export default defineNuxtConfig({
   ssr: true,
   css: ["~/assets/css/main.css", "@fortawesome/fontawesome-svg-core/styles.css"],
   app: {
+    pageTransition: { name: "page", mode: "out-in" },
     head: {
       htmlAttrs: { lang: "en" },
       title: "Francisco Maranchello",
@@ -14,7 +15,7 @@ export default defineNuxtConfig({
         { rel: "preconnect", href: "https://fonts.gstatic.com", crossorigin: "" },
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500;700&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap",
         },
       ],
     },
@@ -22,8 +23,14 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/home", "/about", "/projects", "/blog"],
+      routes: ["/", "/home", "/about", "/projects"],
     },
+  },
+  routeRules: {
+    "/blog": { redirect: { to: "https://maranchello.substack.com/", statusCode: 301 } },
+    "/blog/**": { redirect: { to: "https://maranchello.substack.com/", statusCode: 301 } },
+    "/products": { redirect: { to: "https://radical-labs.co/#products", statusCode: 301 } },
+    "/products/**": { redirect: { to: "https://radical-labs.co/#products", statusCode: 301 } },
   },
   runtimeConfig: {
     public: {

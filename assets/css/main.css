@@ -1,15 +1,18 @@
 :root {
   color-scheme: light;
-  --bg: #f7f6f2;
+  --bg: #f7f8f4;
   --surface: #ffffff;
-  --surface-muted: #ece8df;
-  --text: #181816;
-  --muted: #68645b;
-  --line: #ded8cc;
-  --primary: #1f6f78;
-  --primary-dark: #164f56;
-  --accent: #b9463a;
-  --shadow: 0 18px 55px rgba(24, 24, 22, 0.09);
+  --surface-muted: #edf1ee;
+  --text: #101415;
+  --muted: #5f696c;
+  --line: #dce3df;
+  --primary: #0080ff;
+  --primary-dark: #005fcc;
+  --accent: #f36b2f;
+  --shadow: 0 18px 55px rgba(10, 21, 24, 0.1);
+  --body-font: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --mono-font: "JetBrains Mono", "SFMono-Regular", Consolas, monospace;
 }
 
 * {
@@ -26,24 +29,23 @@ body {
   min-height: 100%;
   background: var(--bg);
   color: var(--text);
-  font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  font-family: var(--body-font);
   font-weight: 400;
   letter-spacing: 0;
 }
 
 body.dark {
   color-scheme: dark;
-  --bg: #141615;
-  --surface: #202421;
-  --surface-muted: #2b302c;
-  --text: #f5f1e8;
-  --muted: #b9b2a6;
-  --line: #3e453f;
-  --primary: #73b7bf;
-  --primary-dark: #9bcbd0;
-  --accent: #e58b78;
-  --shadow: 0 18px 55px rgba(0, 0, 0, 0.26);
+  --bg: #090d14;
+  --surface: #101722;
+  --surface-muted: #171f2c;
+  --text: #f6f7fb;
+  --muted: #a7b1bb;
+  --line: #222d3a;
+  --primary: #4da6ff;
+  --primary-dark: #83c2ff;
+  --accent: #ff6f36;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.34);
 }
 
 a {
@@ -93,7 +95,7 @@ button {
   font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0;
 }
 
 .section-copy {
@@ -112,7 +114,12 @@ button {
   background: transparent;
   color: var(--primary);
   min-height: 42px;
-  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+  transition:
+    background 180ms ease,
+    box-shadow 180ms ease,
+    color 180ms ease,
+    border-color 180ms ease,
+    transform 180ms ease;
 }
 
 .button {
@@ -131,8 +138,10 @@ button {
 .button:hover,
 .icon-button:hover {
   background: var(--primary);
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--primary) 26%, transparent);
   color: var(--surface);
   text-decoration: none;
+  transform: translateY(-2px);
 }
 
 .grid {
@@ -147,6 +156,13 @@ button {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
+}
+
+.card:hover {
+  border-color: color-mix(in srgb, var(--primary) 45%, var(--line));
+  box-shadow: var(--shadow), 0 0 32px color-mix(in srgb, var(--primary) 14%, transparent);
+  transform: translateY(-3px);
 }
 
 .card-body {
@@ -161,9 +177,10 @@ button {
 
 .meta {
   color: var(--muted);
+  font-family: var(--mono-font);
   font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0;
 }
 
 .tags {
@@ -229,6 +246,40 @@ button {
   padding: 22px;
   color: var(--muted);
   background: var(--surface);
+}
+
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 @media (max-width: 720px) {

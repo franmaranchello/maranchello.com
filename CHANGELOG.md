@@ -7,7 +7,7 @@ All notable changes to this project are documented in this file.
 ### Added
 
 - The portfolio now runs on Nuxt 4 and Vue 3 with prerendered public pages for better SEO.
-- Projects, posts, auth, and admin creation flows now use the modern Firebase modular SDK.
+- Projects, auth, and admin creation flows now use the modern Firebase modular SDK.
 
 ### For contributors
 
@@ -23,9 +23,12 @@ All notable changes to this project are documented in this file.
 - Firestore and Storage writes are now restricted to the portfolio admin UID.
 - The legacy `/home` URL now renders the homepage instead of returning a 404.
 - Admin gallery uploads now preserve numeric filename ordering.
-- Dynamic project and blog detail URLs now fall back to the Nuxt app for admin-created content between deploys.
+- Dynamic project detail URLs now fall back to the Nuxt app for admin-created content between deploys.
 - Google Analytics page-view tracking now initializes from the configured measurement ID.
+- The Blog and Products navigation items now leave the site for Substack and Radical Labs products.
+- The home page uses Radical Labs-inspired type, color accents, and smooth motion.
 
 ### Removed
 
 - Removed the old Vue CLI, Vue 2, Vuetify 2, Vuex, and vue-router application tree.
+- Removed the local blog routes, post admin route, and Medium social icon.

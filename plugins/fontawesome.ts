@@ -6,12 +6,11 @@ import {
   faGoogle,
   faInstagram,
   faLinkedin,
-  faMedium,
   faXTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
 config.autoAddCss = false;
-library.add(faGithub, faGoogle, faInstagram, faLinkedin, faMedium, faMoon, faSun, faXTwitter);
+library.add(faGithub, faGoogle, faInstagram, faLinkedin, faMoon, faSun, faXTwitter);
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.component("FontAwesomeIcon", FontAwesomeIcon);

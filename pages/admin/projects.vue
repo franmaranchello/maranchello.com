@@ -43,6 +43,23 @@
           {{ saving ? "Creating..." : "Create project" }}
         </button>
       </form>
+
+      <form class="form backfill-form" @submit.prevent="submitGalleryBackfill">
+        <h2>Attach images to an existing project</h2>
+        <label class="field">
+          <span>Firestore project ID</span>
+          <input v-model="backfill.projectId" placeholder="S5a4SvaeUQb4DOsjoIyb" required />
+        </label>
+        <label class="field">
+          <span>Images</span>
+          <input type="file" accept="image/*" multiple required @change="setBackfillFiles" />
+        </label>
+
+        <div v-if="backfill.message" class="notice">{{ backfill.message }}</div>
+        <button class="button" type="submit" :disabled="backfill.saving">
+          {{ backfill.saving ? "Uploading..." : "Attach images" }}
+        </button>
+      </form>
     </AdminGuard>
   </section>
 </template>
@@ -53,6 +70,12 @@ const tags = ref("");
 const files = ref<File[]>([]);
 const saving = ref(false);
 const message = ref("");
+const backfill = reactive({
+  files: [] as File[],
+  message: "",
+  projectId: "",
+  saving: false,
+});
 const form = reactive({
   name: "",
   type: "",
@@ -72,6 +95,11 @@ const parsedTags = computed(() =>
 const setFiles = (event: Event) => {
   const input = event.target as HTMLInputElement;
   files.value = Array.from(input.files || []);
+};
+
+const setBackfillFiles = (event: Event) => {
+  const input = event.target as HTMLInputElement;
+  backfill.files = Array.from(input.files || []);
 };
 
 const submitProject = async () => {
@@ -94,8 +122,39 @@ const submitProject = async () => {
   }
 };
 
+const submitGalleryBackfill = async () => {
+  backfill.saving = true;
+  backfill.message = "";
+
+  try {
+    const uploaded = await appendProjectGallery(backfill.projectId, backfill.files);
+    backfill.message = uploaded.length
+      ? `Attached ${uploaded.length} image${uploaded.length === 1 ? "" : "s"}.`
+      : "No images selected.";
+  } catch (error) {
+    console.error(error);
+    backfill.message = "Image upload failed. Check the console for details.";
+  } finally {
+    backfill.saving = false;
+  }
+};
+
 useSeoMeta({
   title: "Create Project | Francisco Maranchello",
   robots: "noindex,nofollow",
 });
 </script>
+
+<style scoped>
+.backfill-form {
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+  padding-top: 32px;
+}
+
+.backfill-form h2 {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 600;
+}
+</style>

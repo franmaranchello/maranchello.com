@@ -1,4 +1,4 @@
-import type { FirestoreDate, PortfolioPost, PortfolioProject } from "~/types/content";
+import type { FirestoreDate, PortfolioProject } from "~/types/content";
 
 export const toDate = (value: FirestoreDate | Date | string | null | undefined) => {
   if (!value) return null;
@@ -40,17 +40,6 @@ export const projectFromDoc = (id: string, data: Record<string, unknown>): Portf
   year: toYear(data.date as FirestoreDate),
   tags: normalizeTags(data.tags),
   collection: String(data.collection || ""),
-  description: String(data.description || ""),
-  content: String(data.content || ""),
-  gallery: normalizeGallery(data.gallery),
-});
-
-export const postFromDoc = (id: string, data: Record<string, unknown>): PortfolioPost => ({
-  id,
-  name: String(data.name || "Untitled post"),
-  date: toIsoDate(data.date as FirestoreDate),
-  year: toYear(data.date as FirestoreDate),
-  tags: normalizeTags(data.tags),
   description: String(data.description || ""),
   content: String(data.content || ""),
   gallery: normalizeGallery(data.gallery),
