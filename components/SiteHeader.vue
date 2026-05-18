@@ -21,11 +21,13 @@ const dark = useState("dark-mode", () => false);
 onMounted(() => {
   const hour = new Date().getHours();
   dark.value = hour > 17 || hour < 8;
+  document.documentElement.classList.toggle("dark", dark.value);
   document.body.classList.toggle("dark", dark.value);
 });
 
 const toggleTheme = () => {
   dark.value = !dark.value;
+  document.documentElement.classList.toggle("dark", dark.value);
   document.body.classList.toggle("dark", dark.value);
 };
 </script>

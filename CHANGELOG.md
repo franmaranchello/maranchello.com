@@ -29,6 +29,9 @@ All notable changes to this project are documented in this file.
 - The home page uses Radical Labs-inspired type, color accents, and smooth motion.
 - The deployment workflow now authenticates Firebase with a service account JSON secret instead of the deprecated Firebase token.
 - Project tag filtering now has exact tag selection, URL state, result counts, and animated result updates.
+- The app shell now keeps the themed background across the full viewport on shorter pages.
+- The projects page now refreshes Firestore data on the client so admin-created projects can appear between deploys.
+- Project tag filtering now uses a compact dropdown next to search instead of a long chip list.
 
 ### Removed
 

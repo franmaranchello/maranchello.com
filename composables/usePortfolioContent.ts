@@ -24,4 +24,12 @@ export const fetchAbout = async (): Promise<AboutContent> => {
   return { content: String(snapshot.data()?.content || "") };
 };
 
-export const useProjects = () => useAsyncData("projects", fetchProjects, { default: () => [] });
+export const useProjects = async () => {
+  const asyncData = await useAsyncData("projects", fetchProjects, { default: () => [] });
+
+  if (import.meta.client && hasFirebaseConfig()) {
+    await asyncData.refresh();
+  }
+
+  return asyncData;
+};

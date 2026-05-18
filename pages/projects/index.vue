@@ -11,22 +11,16 @@
         <span>Search projects</span>
         <input v-model="searchText" type="search" placeholder="Search by name, tag, type, or collection" />
       </label>
+      <label v-if="allTags.length" class="tag-filter">
+        <span>Filter by tag</span>
+        <select :value="selectedTag" @change="handleTagChange">
+          <option value="">All tags</option>
+          <option v-for="tag in allTags" :key="tag.name" :value="tag.name">
+            {{ tag.name }} ({{ tag.count }})
+          </option>
+        </select>
+      </label>
       <button v-if="hasFilters" class="button" type="button" @click="clearFilters">Clear</button>
-    </div>
-
-    <div v-if="allTags.length" class="filter-panel" aria-label="Project tags">
-      <button
-        v-for="tag in allTags"
-        :key="tag.name"
-        class="tag filter-tag"
-        :class="{ active: tag.name === selectedTag }"
-        type="button"
-        :aria-pressed="tag.name === selectedTag"
-        @click="selectTag(tag.name)"
-      >
-        <span>{{ tag.name }}</span>
-        <span class="tag-count">{{ tag.count }}</span>
-      </button>
     </div>
 
     <p class="result-summary" aria-live="polite">
@@ -112,7 +106,11 @@ const resultSummary = computed(() => {
 });
 
 const selectTag = async (tag: string) => {
-  selectedTag.value = selectedTag.value === tag ? "" : tag;
+  await setSelectedTag(selectedTag.value === tag ? "" : tag);
+};
+
+const setSelectedTag = async (tag: string) => {
+  selectedTag.value = tag;
   await router.replace({
     query: {
       ...route.query,
@@ -121,15 +119,14 @@ const selectTag = async (tag: string) => {
   });
 };
 
+const handleTagChange = async (event: Event) => {
+  const select = event.target as HTMLSelectElement;
+  await setSelectedTag(select.value);
+};
+
 const clearFilters = async () => {
   searchText.value = "";
-  selectedTag.value = "";
-  await router.replace({
-    query: {
-      ...route.query,
-      tag: undefined,
-    },
-  });
+  await setSelectedTag("");
 };
 
 watch(
@@ -149,48 +146,11 @@ useSeoMeta({
 
 <style scoped>
 .toolbar {
-  display: flex;
+  display: grid;
   align-items: flex-end;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 260px) auto;
   gap: 12px;
   margin: 34px 0 26px;
-}
-
-.filter-panel {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin: -8px 0 18px;
-}
-
-.filter-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  transition:
-    background 180ms ease,
-    border-color 180ms ease,
-    color 180ms ease,
-    transform 180ms ease;
-}
-
-.filter-tag:hover,
-.filter-tag.active {
-  border-color: var(--primary);
-  background: var(--primary);
-  color: var(--surface);
-  transform: translateY(-1px);
-}
-
-.tag-count {
-  display: inline-grid;
-  min-width: 22px;
-  height: 22px;
-  place-items: center;
-  border-radius: 999px;
-  background: color-mix(in srgb, currentColor 12%, transparent);
-  font-family: var(--mono-font);
-  font-size: 0.72rem;
 }
 
 .result-summary {
@@ -219,30 +179,44 @@ useSeoMeta({
   position: absolute;
 }
 
-.search {
+.search,
+.tag-filter {
   display: grid;
-  flex: 1;
   gap: 6px;
 }
 
-.search span {
+.search span,
+.tag-filter span {
   color: var(--muted);
   font-size: 0.86rem;
 }
 
-.search input {
+.search input,
+.tag-filter select {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--surface);
   color: var(--text);
   padding: 12px 16px;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.tag-filter select {
+  min-height: 46px;
+  cursor: pointer;
+}
+
+.search input:focus,
+.tag-filter select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--primary) 18%, transparent);
+  outline: none;
 }
 
 @media (max-width: 640px) {
   .toolbar {
-    align-items: stretch;
-    flex-direction: column;
+    grid-template-columns: 1fr;
   }
 }
 </style>
