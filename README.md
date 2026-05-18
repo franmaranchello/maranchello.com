@@ -4,6 +4,8 @@ Personal portfolio for Francisco Maranchello, built with Nuxt 4, Vue 3, TypeScri
 
 The public portfolio pages are rendered by Nuxt so crawlers receive real HTML instead of waiting for a client-only Vue app to load. Firestore remains the source for projects and about-page content, while Firebase Auth/Storage are used by the hidden admin tools.
 
+Search metadata is generated for every public page, including canonical URLs, Open Graph and Twitter previews, and Schema.org JSON-LD for the person, website, project index, and project detail pages. The static build also exposes `/robots.txt`, `/sitemap.xml`, and `/llms.txt` so search crawlers and AI agents can discover the canonical portfolio pages and project URLs.
+
 ## Setup
 
 ```bash
@@ -26,6 +28,8 @@ npm run generate
 ```
 
 The generated Firebase Hosting output is written to `.output/public`.
+
+The generate step prerenders public pages, private admin entry routes, crawler discovery files, and Firestore-backed project detail pages when Firebase public config is available.
 
 ## Testing
 

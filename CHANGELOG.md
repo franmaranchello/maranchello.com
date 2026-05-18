@@ -6,9 +6,12 @@ All notable changes to this project are documented in this file.
 
 ### Added
 
-- Added a shared SEO metadata helper for canonical URLs, Open Graph, Twitter cards, robots directives, and JSON-LD.
-- Added dynamic `robots.txt`, `sitemap.xml`, and `llms.txt` routes for crawler and AI-agent discovery.
-- Added structured data for the portfolio owner, website, about page, projects collection, project detail pages, and breadcrumbs.
+- Every public page now has consistent canonical URLs, Open Graph previews, Twitter cards, robots directives, and JSON-LD.
+- Search crawlers and AI agents can now discover canonical portfolio content through dynamic `robots.txt`, `sitemap.xml`, and `llms.txt` files.
+- Project pages now expose structured data for the portfolio owner, website, project collection, individual projects, and breadcrumbs.
+
+### For contributors
+
 - Added SEO helper tests for canonical URL normalization, XML escaping, metadata text cleanup, project descriptions, and JSON-LD script safety.
 
 ### Changed
