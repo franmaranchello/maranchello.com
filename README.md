@@ -1,37 +1,57 @@
 # maranchello.com
 
-A personal portfolio webapp using TypeScript, Vue, Vuetify and Firebase. It allows creating projects and posts under authentication.
+Personal portfolio for Francisco Maranchello, built with Nuxt 4, Vue 3, TypeScript, and Firebase.
 
-## Project setup
+The public portfolio pages are rendered by Nuxt so crawlers receive real HTML instead of waiting for a client-only Vue app to load. Firestore remains the source for projects and about-page content, while Firebase Auth/Storage are used by the hidden admin tools.
 
-```
+## Setup
+
+```bash
 npm install
+cp .env.example .env
 ```
 
-### Compiles and hot-reloads for development
+Fill the Firebase values in `.env`.
 
-```
-npm run serve
-```
+## Development
 
-### Compiles and minifies for production
-
-```
-npm run build
+```bash
+npm run dev
 ```
 
-### Compiles and deploys to firebase hosting
+## Production Build
 
+```bash
+npm run generate
 ```
+
+The generated Firebase Hosting output is written to `.output/public`.
+
+## Testing
+
+```bash
+npm run test
+npm run typecheck
+npm run generate
+```
+
+See [TESTING.md](TESTING.md) for testing conventions.
+
+## Deploy
+
+```bash
 npm run deploy
 ```
 
-### Lints and fixes files
+GitHub Actions also deploys on pushes to `main`. The deploy workflow expects these repository secrets:
 
-```
-npm run lint
-```
+- `FIREBASE_SERVICE_ACCOUNT_JSON`
+- `NUXT_PUBLIC_FIREBASE_API_KEY`
+- `NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+- `NUXT_PUBLIC_FIREBASE_PROJECT_ID`
+- `NUXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+- `NUXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+- `NUXT_PUBLIC_FIREBASE_APP_ID`
+- `NUXT_PUBLIC_FIREBASE_MEASUREMENT_ID`
 
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Set the optional `NUXT_PUBLIC_SITE_URL` repository variable to override the canonical site URL.

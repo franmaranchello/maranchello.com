@@ -4,11 +4,41 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist",
+    "public": ".output/public",
     "ignore": [
       "firebase.json",
       "**/.*",
       "**/node_modules/**"
+    ],
+    "cleanUrls": true,
+    "trailingSlash": false,
+    "redirects": [
+      {
+        "source": "/blog",
+        "destination": "https://maranchello.substack.com/",
+        "type": 301
+      },
+      {
+        "source": "/blog/**",
+        "destination": "https://maranchello.substack.com/",
+        "type": 301
+      },
+      {
+        "source": "/products",
+        "destination": "https://radical-labs.co/#products",
+        "type": 301
+      },
+      {
+        "source": "/products/**",
+        "destination": "https://radical-labs.co/#products",
+        "type": 301
+      }
+    ],
+    "rewrites": [
+      {
+        "source": "/projects/**",
+        "destination": "/200.html"
+      }
     ]
   },
   "emulators": {
