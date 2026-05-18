@@ -10,7 +10,8 @@
     "preview": "nuxt preview",
     "test": "nuxt prepare && vitest run",
     "typecheck": "nuxt typecheck",
-    "deploy": "npm run generate && firebase deploy --non-interactive"
+    "deploy": "npm run generate && firebase deploy --non-interactive",
+    "deploy:hosting": "npm run generate && firebase deploy --only hosting --non-interactive"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.2.0",
