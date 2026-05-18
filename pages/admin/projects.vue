@@ -139,8 +139,10 @@ const submitGalleryBackfill = async () => {
   }
 };
 
-useSeoMeta({
-  title: "Create Project | Francisco Maranchello",
+useSiteSeo({
+  title: "Create Project",
+  description: "Private project creation tool for Francisco Maranchello's portfolio.",
+  path: "/admin/projects",
   robots: "noindex,nofollow",
 });
 </script>

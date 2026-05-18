@@ -23,14 +23,28 @@ export default defineNuxtConfig({
   nitro: {
     prerender: {
       crawlLinks: true,
-      routes: ["/", "/home", "/about", "/projects", "/login", "/admin", "/admin/projects"],
+      routes: [
+        "/",
+        "/about",
+        "/projects",
+        "/login",
+        "/admin",
+        "/admin/projects",
+        "/robots.txt",
+        "/sitemap.xml",
+        "/llms.txt",
+      ],
     },
   },
   routeRules: {
+    "/home": { redirect: { to: "/", statusCode: 301 } },
     "/blog": { redirect: { to: "https://maranchello.substack.com/", statusCode: 301 } },
     "/blog/**": { redirect: { to: "https://maranchello.substack.com/", statusCode: 301 } },
     "/products": { redirect: { to: "https://radical-labs.co/#products", statusCode: 301 } },
     "/products/**": { redirect: { to: "https://radical-labs.co/#products", statusCode: 301 } },
+    "/login": { headers: { "X-Robots-Tag": "noindex, nofollow" } },
+    "/admin": { headers: { "X-Robots-Tag": "noindex, nofollow" } },
+    "/admin/**": { headers: { "X-Robots-Tag": "noindex, nofollow" } },
   },
   runtimeConfig: {
     public: {

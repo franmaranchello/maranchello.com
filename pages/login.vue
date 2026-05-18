@@ -41,6 +41,13 @@ const signIn = async () => {
     loading.value = false;
   }
 };
+
+useSiteSeo({
+  title: "Admin Sign In",
+  description: "Private admin sign-in for Francisco Maranchello's portfolio.",
+  path: "/login",
+  robots: "noindex,nofollow",
+});
 </script>
 
 <style scoped>
