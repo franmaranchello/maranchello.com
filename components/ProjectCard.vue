@@ -11,7 +11,15 @@
       </h2>
       <p class="description">{{ project.description }}</p>
       <div v-if="project.tags.length" class="tags">
-        <button v-for="tag in project.tags" :key="tag" class="tag" type="button" @click="$emit('tag', tag)">
+        <button
+          v-for="tag in project.tags"
+          :key="tag"
+          class="tag"
+          :class="{ active: tag === activeTag }"
+          type="button"
+          :aria-pressed="tag === activeTag"
+          @click="$emit('tag', tag)"
+        >
           {{ tag }}
         </button>
       </div>
@@ -23,6 +31,7 @@
 import type { PortfolioProject } from "~/types/content";
 
 const props = defineProps<{
+  activeTag?: string;
   project: PortfolioProject;
 }>();
 
@@ -69,5 +78,11 @@ img {
 
 .tag {
   cursor: pointer;
+}
+
+.tag.active {
+  border-color: var(--primary);
+  background: var(--primary);
+  color: var(--surface);
 }
 </style>

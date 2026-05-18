@@ -27,6 +27,8 @@ All notable changes to this project are documented in this file.
 - Google Analytics page-view tracking now initializes from the configured measurement ID.
 - The Blog and Products navigation items now leave the site for Substack and Radical Labs products.
 - The home page uses Radical Labs-inspired type, color accents, and smooth motion.
+- The deployment workflow now authenticates Firebase with a service account JSON secret instead of the deprecated Firebase token.
+- Project tag filtering now has exact tag selection, URL state, result counts, and animated result updates.
 
 ### Removed
 

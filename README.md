@@ -45,7 +45,7 @@ npm run deploy
 
 GitHub Actions also deploys on pushes to `main`. The deploy workflow expects these repository secrets:
 
-- `FIREBASE_TOKEN`
+- `FIREBASE_SERVICE_ACCOUNT_JSON`
 - `NUXT_PUBLIC_FIREBASE_API_KEY`
 - `NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
 - `NUXT_PUBLIC_FIREBASE_PROJECT_ID`

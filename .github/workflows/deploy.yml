@@ -10,7 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       NUXT_PUBLIC_FIREBASE_API_KEY: ${{ secrets.NUXT_PUBLIC_FIREBASE_API_KEY }}
       NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ${{ secrets.NUXT_PUBLIC_FIREBASE_AUTH_DOMAIN }}
       NUXT_PUBLIC_FIREBASE_PROJECT_ID: ${{ secrets.NUXT_PUBLIC_FIREBASE_PROJECT_ID }}
@@ -39,5 +38,12 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
+      - name: Authenticate Firebase
+        env:
+          FIREBASE_SERVICE_ACCOUNT_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_JSON }}
+        run: |
+          printf '%s' "$FIREBASE_SERVICE_ACCOUNT_JSON" > "$RUNNER_TEMP/firebase-service-account.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/firebase-service-account.json" >> "$GITHUB_ENV"
+
       - name: Deploy to Firebase
-        run: npm run deploy -- --project maranchello-website --token "$FIREBASE_TOKEN"
+        run: npm run deploy -- --project maranchello-website
