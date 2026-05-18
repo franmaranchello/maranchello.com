@@ -24,6 +24,7 @@ All notable changes to this project are documented in this file.
 - The legacy `/home` URL now renders the homepage instead of returning a 404.
 - Admin gallery uploads now preserve numeric filename ordering.
 - Dynamic project and blog detail URLs now fall back to the Nuxt app for admin-created content between deploys.
+- Google Analytics page-view tracking now initializes from the configured measurement ID.
 
 ### Removed
 
