@@ -32,6 +32,7 @@ All notable changes to this project are documented in this file.
 - The app shell now keeps the themed background across the full viewport on shorter pages.
 - The projects page now refreshes Firestore data on the client so admin-created projects can appear between deploys.
 - Project tag filtering now uses a compact dropdown next to search instead of a long chip list.
+- Hidden admin entry routes are now explicitly prerendered for direct production loads.
 
 ### Removed
 
