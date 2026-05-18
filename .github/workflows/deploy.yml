@@ -46,4 +46,4 @@ jobs:
           echo "GOOGLE_APPLICATION_CREDENTIALS=$RUNNER_TEMP/firebase-service-account.json" >> "$GITHUB_ENV"
 
       - name: Deploy to Firebase
-        run: npm run deploy -- --project maranchello-website
+        run: npm run deploy:hosting -- --project maranchello-website
