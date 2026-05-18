@@ -2,6 +2,23 @@
 
 All notable changes to this project are documented in this file.
 
+## [1.1.1.0] - 2026-05-18
+
+### Added
+
+- Added a shared SEO metadata helper for canonical URLs, Open Graph, Twitter cards, robots directives, and JSON-LD.
+- Added dynamic `robots.txt`, `sitemap.xml`, and `llms.txt` routes for crawler and AI-agent discovery.
+- Added structured data for the portfolio owner, website, about page, projects collection, project detail pages, and breadcrumbs.
+- Added SEO helper tests for canonical URL normalization, XML escaping, metadata text cleanup, project descriptions, and JSON-LD script safety.
+
+### Changed
+
+- Public pages now emit consistent canonical, social preview, and structured metadata.
+- Project detail pages now use project content, gallery images, tags, dates, and breadcrumbs in search metadata.
+- Admin and login pages now emit `noindex,nofollow` metadata and Firebase Hosting robot headers.
+- The legacy `/home` URL now redirects permanently to `/`.
+- Firebase Hosting now caches generated Nuxt assets and crawler discovery files with explicit cache headers.
+
 ## [1.1.0.0] - 2026-05-17
 
 ### Added
