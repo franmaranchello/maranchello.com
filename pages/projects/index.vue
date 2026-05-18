@@ -44,6 +44,8 @@
 </template>
 
 <script setup lang="ts">
+import { PERSON_NAME, projectPath } from "~/utils/seo";
+
 const searchText = ref("");
 const route = useRoute();
 const router = useRouter();
@@ -136,12 +138,31 @@ watch(
   }
 );
 
-useSeoMeta({
-  title: "Projects | Francisco Maranchello",
+const seo = useSiteSeo({
+  title: "Projects",
   description:
     "Selected architecture, software, product, and technical projects by Francisco Maranchello.",
-  ogTitle: "Projects | Francisco Maranchello",
+  path: "/projects",
 });
+
+useJsonLd(() => ({
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": `${seo.canonical.value}#projects`,
+  url: seo.canonical.value,
+  name: `Projects by ${PERSON_NAME}`,
+  description: seo.description.value,
+  mainEntity: {
+    "@type": "ItemList",
+    numberOfItems: projects.value.length,
+    itemListElement: projects.value.map((project, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: `${seo.siteUrl.value}${projectPath(project)}`,
+      name: project.name,
+    })),
+  },
+}));
 </script>
 
 <style scoped>

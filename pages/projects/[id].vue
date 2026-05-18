@@ -24,6 +24,7 @@
 
 <script setup lang="ts">
 import { fetchProject } from "~/composables/usePortfolioContent";
+import { PERSON_NAME, projectPath, projectSeoDescription } from "~/utils/seo";
 
 const route = useRoute();
 const id = computed(() => String(route.params.id || ""));
@@ -33,12 +34,49 @@ if (!project.value) {
   throw createError({ statusCode: 404, statusMessage: "Project not found" });
 }
 
-useSeoMeta({
-  title: () => `${project.value?.name || "Project"} | Francisco Maranchello`,
-  description: () => project.value?.description || "Project by Francisco Maranchello.",
-  ogTitle: () => project.value?.name || "Project | Francisco Maranchello",
-  ogDescription: () => project.value?.description || "Project by Francisco Maranchello.",
-  ogImage: () => project.value?.gallery[0] || undefined,
+const seo = useSiteSeo({
+  title: () => project.value?.name || "Project",
+  description: () => projectSeoDescription(project.value),
+  image: () => project.value?.gallery[0],
+  path: () => (project.value ? projectPath(project.value) : `/projects/${id.value}`),
+  type: "article",
+});
+
+useJsonLd(() => {
+  if (!project.value) return [];
+
+  return [
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "@id": `${seo.canonical.value}#project`,
+      url: seo.canonical.value,
+      name: project.value.name,
+      description: projectSeoDescription(project.value),
+      image: project.value.gallery,
+      dateCreated: project.value.date || undefined,
+      keywords: project.value.tags,
+      creator: { "@id": `${seo.siteUrl.value}/#person`, name: PERSON_NAME },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Projects",
+          item: `${seo.siteUrl.value}/projects`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: project.value.name,
+          item: seo.canonical.value,
+        },
+      ],
+    },
+  ];
 });
 </script>
 

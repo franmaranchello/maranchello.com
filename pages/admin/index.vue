@@ -19,6 +19,13 @@ const handleLogout = async () => {
   await logout();
   await navigateTo("/");
 };
+
+useSiteSeo({
+  title: "Admin",
+  description: "Private content management area for Francisco Maranchello's portfolio.",
+  path: "/admin",
+  robots: "noindex,nofollow",
+});
 </script>
 
 <style scoped>

@@ -17,20 +17,44 @@
 
 <script setup lang="ts">
 import { fetchAbout } from "~/composables/usePortfolioContent";
-import { getPublicStorageUrl } from "~/utils/firebase";
+import { getPublicStorageUrlFromBucket } from "~/utils/firebase";
+import { PERSON_NAME, truncateDescription } from "~/utils/seo";
 
 const { data: about } = await useAsyncData("about", fetchAbout, {
   default: () => ({ content: "" }),
 });
 
-const profileUrl = computed(() => getPublicStorageUrl("project-assets/default/profile.jpg"));
+const runtimeConfig = useRuntimeConfig();
+const profileUrl = computed(() =>
+  getPublicStorageUrlFromBucket(
+    runtimeConfig.public.firebase.storageBucket,
+    "project-assets/default/profile.jpg"
+  )
+);
+const description = computed(() =>
+  truncateDescription(
+    about.value.content,
+    "About Francisco Maranchello, an architect, software developer, entrepreneur, and cofounder at Radical Labs."
+  )
+);
 
-useSeoMeta({
-  title: "About Francisco Maranchello",
-  description:
-    "About Francisco Maranchello, an architect, software developer, entrepreneur, and cofounder at Radical Labs.",
-  ogTitle: "About Francisco Maranchello",
+const seo = useSiteSeo({
+  title: "About",
+  description: () => description.value,
+  image: () => profileUrl.value,
+  path: "/about",
+  type: "profile",
 });
+
+useJsonLd(() => ({
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "@id": `${seo.canonical.value}#about`,
+  url: seo.canonical.value,
+  name: `About ${PERSON_NAME}`,
+  description: description.value,
+  mainEntity: { "@id": `${seo.siteUrl.value}/#person` },
+}));
 </script>
 
 <style scoped>

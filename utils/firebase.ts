@@ -33,12 +33,15 @@ export const getFirebaseApp = (): FirebaseApp => {
 
 export const getFirestoreDb = () => getFirestore(getFirebaseApp());
 
-export const getPublicStorageUrl = (path: string) => {
-  const bucket = getFirebaseConfig().storageBucket;
-
+export const getPublicStorageUrlFromBucket = (bucket: string | undefined, path: string) => {
   if (!bucket) return "";
 
   return `https://firebasestorage.googleapis.com/v0/b/${bucket}/o/${encodeURIComponent(
     path
   )}?alt=media`;
+};
+
+export const getPublicStorageUrl = (path: string) => {
+  const bucket = getFirebaseConfig().storageBucket;
+  return getPublicStorageUrlFromBucket(bucket, path);
 };
